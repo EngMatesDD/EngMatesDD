@@ -300,5 +300,9 @@
         "just_finished": "just finished",
         "see_more_feedback": "See more feedback",
         "delete": "delete"
+    },
+    "Operation": {
+        "delete": "delete",
+        "edit": "edit"
     }
 }

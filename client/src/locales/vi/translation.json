@@ -300,5 +300,9 @@
         "just_finished": "vừa xong",
         "see_more_feedback": "Xem thêm phản hồi",
         "delete": "Xóa"
+    },
+    "Operation": {
+        "delete": "Xóa",
+        "edit": "Chỉnh sửa"
     }
 }

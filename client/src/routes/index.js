@@ -13,12 +13,13 @@ import News from '~/pages/User/News';
 import NewDetail from '~/pages/User/News/NewDetail';
 import Video from '~/pages/User/Video';
 import VideoDetail from '~/pages/User/Video/VideoDetail';
+import ChatAI from '~/pages/User/ChatAI';
 
 import ManageUser from '~/pages/Admin/ManageUser';
 import ManageNews from '~/pages/Admin/ManageNews';
 import ManageVideo from '~/pages/Admin/ManageVideo';
 import ManageWordCategory from '~/pages/Admin/ManageWordCategory';
-import { DefautLayout, AdminLayout } from '~/layout';
+import { DefautLayout, AdminLayout, OnlyHeaderLayout } from '~/layout';
 import config from '~/config';
 import ManageWord from '~/pages/Admin/ManageWordCategory/ManageWord';
 import Forum from '~/pages/User/Forum';
@@ -40,6 +41,7 @@ const privateRoutes = [
     { path: config.routes.forum.FORUM, element: Forum, layout: DefautLayout },
     { path: config.routes.forum.MYPOST, element: Forum, layout: DefautLayout },
     { path: config.routes.forum.COMUNITY, element: Forum, layout: DefautLayout },
+    { path: config.routes.chat_ai.CHAT_AI, element: ChatAI, layout: OnlyHeaderLayout },
 ];
 
 const adminRoutes = [
