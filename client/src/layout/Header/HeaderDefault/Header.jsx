@@ -61,16 +61,18 @@ function Header() {
     return (
         <div className={cx('fixed left-0 top-0 z-10 flex w-full justify-center ', 'header')}>
             <div className={cx('flex h-full w-full items-center justify-between', 'max-xl:relative', 'inner')}>
+                {/* button menu */}
                 <button className={cx('invisible', 'max-xl:visible max-xl:pr-4')} onClick={handleClickBtnMenu}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
-
+                {/* logo */}
                 <Link to={config.routes.HOME} className={cx('flex', 'logo-link')}>
                     <Image src={logo} />
                 </Link>
-
+                {/* input Search */}
                 <Search showBoxSearch={showBoxSearch} />
 
+                {/* list Menu */}
                 <ul
                     className={cx(
                         'mr-4 flex h-full flex-1 items-center justify-end',
@@ -91,7 +93,7 @@ function Header() {
                                     'flex h-full cursor-pointer items-center px-2 py-0 text-[0.90625rem] font-semibold',
                                     'max-xl:w-full max-xl:!py-3 max-xl:!text-[0.9375rem]',
                                     'navigation-item',
-                                    currentPath.includes(value.link) && 'navigation-item-curent',
+                                    currentPath.includes(value.link.split('/')[1]) && 'navigation-item-curent',
                                 )}
                             >
                                 <Link to={value.link} onClick={handleClickBtnMenu}>
@@ -102,17 +104,21 @@ function Header() {
                     })}
                 </ul>
 
+                {/* button open input Search */}
                 {!showBoxSearch && (
                     <button className={cx('open-search')} onClick={openSearch}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 )}
+
+                {/* button close input Search */}
                 {showBoxSearch && (
                     <button className={cx('close-search')} onClick={closeSearch}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
                 )}
 
+                {/* action */}
                 <Action userMenu={userMenu} />
             </div>
         </div>

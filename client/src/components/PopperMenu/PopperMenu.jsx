@@ -15,9 +15,9 @@ function PopperMenu({ children, items = [], handleClick = defaultFn }) {
     };
 
     const renderResult = (attrs) => (
-        <div tabIndex="-1" {...attrs}>
+        <div className={cx('mr-2')} tabIndex="-1" {...attrs}>
             <PopperWrapper>
-                <div className={cx('overflow-y-auto')}>{renderItems()}</div>
+                <div className={cx('overflow-y-auto py-[2px]')}>{renderItems()}</div>
             </PopperWrapper>
         </div>
     );
