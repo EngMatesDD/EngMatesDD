@@ -1,4 +1,4 @@
-package com.doantotnghiep.server.feature.folder.dto;
+package com.doantotnghiep.server.feature.wordBook.folder.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;

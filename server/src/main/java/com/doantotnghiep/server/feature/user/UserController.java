@@ -28,22 +28,4 @@ public class UserController {
         }
     }
 
-//    @GetMapping("/all")
-//    public ResponseEntity<AllUserResponse> getAllUser(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) throws ResponseException {
-//        try {
-//            return userService.getAllUser(page, size);
-//        } catch (ResponseException e) {
-//            throw new ResponseException(e.getMessage(), e.getStatus(), e.getStatusCode());
-//        }
-//    }
-//
-//    @DeleteMapping("")
-//    public ResponseEntity<Boolean> deleteUser(@RequestParam String id) throws ResponseException {
-//        try {
-//            return userService.deleteUser(id);
-//        } catch (ResponseException e) {
-//            throw new ResponseException(e.getMessage(), e.getStatus(), e.getStatusCode());
-//        }
-//    }
-
 }

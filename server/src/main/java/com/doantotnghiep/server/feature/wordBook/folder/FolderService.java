@@ -1,10 +1,10 @@
-package com.doantotnghiep.server.feature.folder;
+package com.doantotnghiep.server.feature.wordBook.folder;
 
 import com.doantotnghiep.server.common.ErrorEnum.FolderErrorEnum;
 import com.doantotnghiep.server.exception.ResponseException;
-import com.doantotnghiep.server.feature.folder.dto.CreateFolderRequest;
-import com.doantotnghiep.server.feature.folder.dto.UpdateFolderRequest;
-import com.doantotnghiep.server.feature.folder.response.AllFolderResponse;
+import com.doantotnghiep.server.feature.wordBook.folder.dto.CreateFolderRequest;
+import com.doantotnghiep.server.feature.wordBook.folder.dto.UpdateFolderRequest;
+import com.doantotnghiep.server.feature.wordBook.folder.response.AllFolderResponse;
 import com.doantotnghiep.server.repository.tbl_folder.Folder;
 import com.doantotnghiep.server.repository.tbl_folder.FolderRepository;
 import com.doantotnghiep.server.repository.tbl_word_folder.WordFolderRepository;

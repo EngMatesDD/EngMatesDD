@@ -1,4 +1,4 @@
-package com.doantotnghiep.server.feature.folder.response;
+package com.doantotnghiep.server.feature.wordBook.folder.response;
 
 import com.doantotnghiep.server.repository.tbl_folder.Folder;
 import lombok.Builder;
