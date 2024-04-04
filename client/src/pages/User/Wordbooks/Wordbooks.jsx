@@ -27,17 +27,17 @@ function Wordbooks() {
     const [isPoperCreateFolder, setIsPoperCreateFolder] = useState(false);
     const [totalPage, setTotalPage] = useState(1);
     const [isDeleteorEdit, setIsDeleteorEdit] = useState(false);
-    const [isChangeCategory, setIsChangeCategory] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [cookies] = useCookies(['token']);
+    const token = cookies.token;
     const { t } = useTranslation('translation', { keyPrefix: 'WordBooks' });
 
     const location = useLocation();
     const currentPath = location.pathname;
-    const currentPage = Number(currentPath.split('/')[3]);
-    const nameCategory = String(currentPath.split('/')[2]);
+    const [nameCategory, setNameCategory] = useState(String(currentPath.split('/')[2]));
+    const [currentPage, setCurrentPage] = useState(Number(currentPath.split('/')[3]));
 
     const paramater = config.getParamaterHeaderSecondnary().wordbooks;
 
@@ -53,21 +53,22 @@ function Wordbooks() {
         }
         const index = currentPath.lastIndexOf('/');
         const pathToPageChanged = currentPath.slice(0, index + 1) + String(value);
+        setCurrentPage(value);
         navigate(pathToPageChanged);
     };
 
     const changeCategory = (index) => {
-        const nameCategory = paramater.menuFilter[index].label;
+        const IdCategory = paramater.menuFilter[index].id;
         const lastIndex = currentPath.lastIndexOf('/');
         const secondLastIndex = currentPath.lastIndexOf('/', lastIndex - 1);
-        const pathToChangedCategory = currentPath.slice(0, secondLastIndex + 1) + String(nameCategory) + '/1';
+        const pathToChangedCategory = currentPath.slice(0, secondLastIndex + 1) + String(IdCategory) + '/1';
         navigate(pathToChangedCategory);
-        setIsChangeCategory(true);
+        setCurrentPage(1);
+        setNameCategory(IdCategory);
     };
 
     const getMyFolder = async (currentPage = 1) => {
         setLoading(true);
-        const token = cookies.token;
         await getFolderAll(token, currentPage - 1, listFolder.size)
             .then((result) => {
                 setLoading(false);
@@ -88,7 +89,6 @@ function Wordbooks() {
 
     const getExploreFolder = async (currentPage = 1) => {
         setLoading(true);
-        const token = cookies.token;
         await getAllCategory(token, currentPage - 1, listFolder.size)
             .then((result) => {
                 setLoading(false);
@@ -108,28 +108,14 @@ function Wordbooks() {
     };
 
     useEffect(() => {
-        if (isChangeCategory === false) {
-            if (nameCategory === 'explore') {
-                getExploreFolder(currentPage);
-            } else {
-                getMyFolder(currentPage);
-            }
+        if (nameCategory === 'explore') {
+            getExploreFolder(currentPage);
+        } else {
+            getMyFolder(currentPage);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage, isDeleteorEdit]);
+    }, [currentPage, isDeleteorEdit, nameCategory]);
 
-    useEffect(() => {
-        console.log('nameCategory: ', nameCategory);
-        if (isChangeCategory === true) {
-            if (nameCategory === 'explore') {
-                getExploreFolder();
-            } else {
-                getMyFolder();
-            }
-            setIsChangeCategory(false);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [nameCategory]);
     return (
         <Fragment>
             <div className={cx('mb-[100px] w-full')}>

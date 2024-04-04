@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
@@ -9,27 +8,28 @@ import HeaderSecondnary from '~/components/HeaderSecondnary';
 import ItemNews from './ItemNews';
 import Pagination from '~/components/Pagination';
 import Loading from '~/components/Loading';
-import { getAllNews } from '~/services/NewsServices';
+import { getAllNews } from '~/services/manageNewsServices';
+import { getAllCategoriesOfNews, getAllNewsCategoryById } from '~/services/manageNewsCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
 
 function News() {
+    const [listCategories, setListCategories] = useState([]);
     const [loading, setLoading] = useState(false);
     const [listNews, setListNew] = useState([]);
     const [totalPage, setTotalPage] = useState(1);
 
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookies] = useCookies(['token']);
-    // eslint-disable-next-line no-unused-vars
-    const { t } = useTranslation('translation', { keyPrefix: 'News' });
+    const [cookies] = useCookies(['token']);
+    const token = cookies.token;
 
-    const location = useLocation();
     const navigate = useNavigate();
 
+    const location = useLocation();
     const currentPath = location.pathname;
-    const currentPage = Number(currentPath.split('/')[2]);
+    const [idCategory, setIdCategory] = useState(String(currentPath.split('/')[2]));
+    const [currentPage, setCurrentPage] = useState(Number(currentPath.split('/')[3]));
 
     const paramater = config.getParamaterHeaderSecondnary().News;
 
@@ -39,10 +39,19 @@ function News() {
         navigate(pathToPageChanged);
     };
 
-    useEffect(() => {
+    const changeCategory = (index) => {
+        const IdCategory = listCategories[index].id;
+        const lastIndex = currentPath.lastIndexOf('/');
+        const secondLastIndex = currentPath.lastIndexOf('/', lastIndex - 1);
+        const pathToChangedCategory = currentPath.slice(0, secondLastIndex + 1) + String(IdCategory) + '/1';
+        navigate(pathToChangedCategory);
+        setCurrentPage(1);
+        setIdCategory(IdCategory);
+    };
+
+    const getAll = async () => {
         setLoading(true);
-        const token = cookies.token;
-        getAllNews(token, currentPage - 1, listNews.size)
+        await getAllNews(token, currentPage - 1, listNews.size)
             .then((result) => {
                 setLoading(false);
                 setListNew(result.listNews);
@@ -57,15 +66,69 @@ function News() {
                     return;
                 }
             });
+    };
+
+    const getNewsOfCategory = async () => {
+        setLoading(true);
+        await getAllNewsCategoryById(token, idCategory, currentPage - 1, listNews.size)
+            .then((result) => {
+                setLoading(false);
+                setListNew(result.newsList);
+                setTotalPage(result.totalPage);
+                return;
+            })
+            .catch((error) => {
+                setLoading(false);
+                const messeageNotify = config.errorMesseage.getMesseageNotify();
+                if (!error.response) {
+                    notify.error(messeageNotify.ERROR_NETWORD);
+                    return;
+                }
+            });
+    };
+
+    useEffect(() => {
+        setLoading(true);
+        getAllCategoriesOfNews(token)
+            .then((result) => {
+                setLoading(false);
+                const listNewsCategories = result.newsCategories.map((category) => ({
+                    id: category.id,
+                    label: category.name,
+                    title: category.name,
+                }));
+                const categoryAll = [{ id: 'all', label: 'tất cả', title: 'tất cả' }];
+                setListCategories([...categoryAll, ...listNewsCategories]);
+                return;
+            })
+            .catch((error) => {
+                setLoading(false);
+                const messeageNotify = config.errorMesseage.getMesseageNotify();
+                if (!error.response) {
+                    notify.error(messeageNotify.ERROR_NETWORD);
+                    return;
+                }
+            });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage]);
+    }, []);
+
+    useEffect(() => {
+        if (idCategory === 'all') {
+            getAll();
+        } else {
+            getNewsOfCategory();
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage, idCategory]);
     return (
         <div className={cx('mb-[40px] w-full')}>
             <HeaderSecondnary
                 iconTitle={paramater.iconTitle}
                 title={paramater.title}
                 backgroundColor={paramater.backgroundColor}
-                menuFilter={paramater.menuFilter}
+                menuFilter={listCategories}
+                onChange={changeCategory}
             />
             <div
                 className={cx(

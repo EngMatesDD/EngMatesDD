@@ -25,8 +25,8 @@ const routes = {
     },
     news: {
         NEW: '/news',
-        NEWS: '/news/:page',
-        NEWDEDAIL: '/news/:page/:idNew',
+        NEWS: '/news/:categoryName/:page',
+        NEWDEDAIL: '/news/:categoryId/:idNew/0',
     },
     text_online: {
         TEXT_ONLINE: '/text_online',
