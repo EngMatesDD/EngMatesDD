@@ -9,12 +9,14 @@ import com.doantotnghiep.server.repository.tbl_news.News;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/system/news")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class NewsSystemController {
     private final NewsSystemService newsSystemService;
     private final ValidateExceptionHandle validateExceptionHandle;

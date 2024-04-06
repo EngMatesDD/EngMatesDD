@@ -12,6 +12,7 @@ import com.doantotnghiep.server.feature.word.dto.RemoveWordFromCategoryRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/words")
+@Transactional(rollbackFor = {Exception.class})
 public class WordController {
     private final WordService wordService;
     private final ValidateExceptionHandle validateExceptionHandle;

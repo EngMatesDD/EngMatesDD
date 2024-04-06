@@ -10,12 +10,14 @@ import com.doantotnghiep.server.feature.wordBook.system.wordCategory.response.Al
 import com.doantotnghiep.server.repository.tbl_word_category.WordCategory;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/wordCategory")
+@Transactional(rollbackFor = {Exception.class})
 public class WordCategoryController {
     private final WordCategoryService wordCategoryService;
     private final ValidateExceptionHandle validateExceptionHandle;

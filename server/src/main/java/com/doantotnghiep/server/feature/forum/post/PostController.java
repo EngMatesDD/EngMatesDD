@@ -13,12 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/posts")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class PostController {
     private final PostService postService;
     private final ValidateExceptionHandle validateExceptionHandle;

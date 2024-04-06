@@ -8,12 +8,14 @@ import com.doantotnghiep.server.repository.tbl_user.User;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class UserController {
     private final UserService userService;
     private final JwtService jwtService;

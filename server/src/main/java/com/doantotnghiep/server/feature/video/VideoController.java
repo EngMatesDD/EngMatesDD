@@ -7,11 +7,13 @@ import com.doantotnghiep.server.repository.tbl_video.Video;
 import com.doantotnghiep.server.feature.video.Response.AllVideoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/videos")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class VideoController {
     private final VideoService videoService;
     private final ValidateExceptionHandle validateExceptionHandle;

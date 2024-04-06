@@ -5,12 +5,14 @@ import com.doantotnghiep.server.exception.ResponseException;
 import com.doantotnghiep.server.feature.user.system.Response.AllUserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/api/system/user")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class UserSystemController {
     private final UserSystemService userSystemService;
 

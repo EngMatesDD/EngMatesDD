@@ -10,6 +10,7 @@ import com.doantotnghiep.server.repository.tbl_video.Video;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/system/videos")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class VideoSystemController {
     private final VideoSystemService videoSystemService;
     private final ValidateExceptionHandle validateExceptionHandle;

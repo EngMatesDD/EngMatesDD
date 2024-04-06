@@ -12,12 +12,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/comments")
 @RequiredArgsConstructor
+@Transactional(rollbackFor = {Exception.class})
 public class CommentController {
     private final CommentService commentService;
     private final ValidateExceptionHandle validateExceptionHandle;
