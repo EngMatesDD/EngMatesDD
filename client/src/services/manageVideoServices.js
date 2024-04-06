@@ -12,7 +12,7 @@ const getAllVideos = async (token, page = 0, size = 10) => {
         },
     });
     return res.data;
-}
+};
 
 const deleteVideo = async (token, id) => {
     const res = await httpRequest.delete(config.api.video.DELETE, {
@@ -24,7 +24,7 @@ const deleteVideo = async (token, id) => {
         },
     });
     return res.data;
-}
+};
 
 const createVideo = async (data, token) => {
     const res = await httpRequest.post(config.api.video.CREATE, data, {
@@ -33,7 +33,7 @@ const createVideo = async (data, token) => {
         },
     });
     return res.data;
-}
+};
 
 const editVideo = async (data, token) => {
     const res = await httpRequest.put(config.api.video.EDIT, data, {
@@ -45,6 +45,18 @@ const editVideo = async (data, token) => {
         },
     });
     return res.data;
-}
+};
 
-export { getAllVideos, deleteVideo, createVideo, editVideo };
+const getDetailVideo = async (id, token) => {
+    const res = await httpRequest.get(config.api.video.GET, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        params: {
+            id: id,
+        },
+    });
+    return res.data;
+};
+
+export { getAllVideos, deleteVideo, createVideo, editVideo, getDetailVideo };

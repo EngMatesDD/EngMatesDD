@@ -12,16 +12,16 @@ const getAllVideoCategories = async (token, page = 0, size = 10) => {
         },
     });
     return res.data;
-}
+};
 
 const deleteVideoCategory = async (token, id) => {
-    const res = await httpRequest.delete(config.api.videoCategory.DELETE + '/'+id, {
+    const res = await httpRequest.delete(config.api.videoCategory.DELETE + '/' + id, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
     });
     return res.data;
-}
+};
 
 const createVideoCategory = async (data, token) => {
     const res = await httpRequest.post(config.api.videoCategory.CREATE, data, {
@@ -30,7 +30,7 @@ const createVideoCategory = async (data, token) => {
         },
     });
     return res.data;
-}
+};
 
 const editVideoCategory = async (data, token) => {
     const res = await httpRequest.put(config.api.videoCategory.EDIT, data, {
@@ -39,10 +39,10 @@ const editVideoCategory = async (data, token) => {
         },
     });
     return res.data;
-}
+};
 
-const getVideosCategoryById = async (token, id, page = 0, size = 10 ) => {
-    const res = await httpRequest.get(config.api.videoCategory.GETBYID + '/'+id + '/videos', {
+const getVideosCategoryById = async (token, id, page = 0, size = 10) => {
+    const res = await httpRequest.get(config.api.videoCategory.GETBYID + '/' + id + '/videos', {
         params: {
             size: size,
             page: page,
@@ -52,6 +52,6 @@ const getVideosCategoryById = async (token, id, page = 0, size = 10 ) => {
         },
     });
     return res.data;
-}
+};
 
 export { getAllVideoCategories, deleteVideoCategory, createVideoCategory, editVideoCategory, getVideosCategoryById };

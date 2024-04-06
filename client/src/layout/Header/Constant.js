@@ -9,7 +9,7 @@ export const getNavigation = () => [
         link:
             config.routes.wordbooks.WORDBOOK + `/${config.getParamaterHeaderSecondnary().wordbooks.menuFilter[0].id}/1`,
     },
-    { title: i18next.t('Header.video'), link: config.routes.video.VIDEO + '/1' },
+    { title: i18next.t('Header.video'), link: config.routes.video.VIDEO + '/all/1' },
     { title: i18next.t('Header.news'), link: config.routes.news.NEW + '/all/1' },
     { title: i18next.t('Header.text_online'), link: config.routes.text_online.TEXT_ONLINE },
     { title: i18next.t('Header.forum'), link: config.routes.forum.MYPOST },

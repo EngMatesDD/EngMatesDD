@@ -20,8 +20,8 @@ const routes = {
     },
     video: {
         VIDEO: '/video',
-        VIDEOS: '/video/:page',
-        VIDEODEDAIL: '/video/:page/:idVideo',
+        VIDEOS: '/video/:categoryName/:page',
+        VIDEODEDAIL: '/video/:categoryId/:idNew/0',
     },
     news: {
         NEW: '/news',

@@ -37,6 +37,7 @@ function News() {
         const index = currentPath.lastIndexOf('/');
         const pathToPageChanged = currentPath.slice(0, index + 1) + String(value);
         navigate(pathToPageChanged);
+        setCurrentPage(value);
     };
 
     const changeCategory = (index) => {

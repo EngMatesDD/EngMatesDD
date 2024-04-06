@@ -16,7 +16,7 @@ function ItemNews({ inforNew }) {
 
     const openNewDetail = () => {
         const lastIndex = currentPath.lastIndexOf('/');
-        const pathToOpenFolder = currentPath.slice(0, lastIndex + 1) + String(inforNew.id) + '/0';
+        const pathToOpenFolder = currentPath.slice(0, lastIndex + 1) + String(inforNew?.id) + '/0';
         navigate(pathToOpenFolder);
     };
 

@@ -18,7 +18,7 @@ const cx = classNames.bind(styles);
 
 function NewDetail() {
     const [loading, setLoading] = useState(false);
-    const [inforNews, setInforNews] = useState(null);
+    const [inforNews, setInforNews] = useState({});
 
     const [cookies] = useCookies(['token']);
     const token = cookies.token;
@@ -42,6 +42,7 @@ function NewDetail() {
             })
             .catch((error) => {
                 setLoading(false);
+                setInforNews(null);
                 const messeageNotify = config.errorMesseage.getMesseageNotify();
                 if (!error.response) {
                     notify.error(messeageNotify.ERROR_NETWORD);
@@ -106,11 +107,10 @@ function NewDetail() {
                             ))}
                         </div>
                     </div>
-
-                    {loading && <Loading />}
                 </div>
             )}
             {!inforNews && <Error />}
+            {loading && <Loading />}
         </Fragment>
     );
 }
