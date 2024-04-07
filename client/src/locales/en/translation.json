@@ -23,6 +23,10 @@
         "requires_login": "This page requires login to access. Please login first",
         "not_access": "Logged in accounts cannot access this page"
     },
+    "Operation": {
+        "delete": "delete",
+        "edit": "edit"
+    },
     "Auth": {
         "login": "Login",
         "username": "Username",

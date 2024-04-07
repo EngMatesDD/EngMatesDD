@@ -4,9 +4,13 @@ import { faCircleQuestion, faEarthAsia, faUser, faSignOut, faUserGear } from '@f
 
 export const getNavigation = () => [
     { title: i18next.t('Header.translation'), link: config.routes.translation.TRANSLATION },
-    { title: i18next.t('Header.wordbooks'), link: config.routes.wordbooks.WORDBOOK + '/1' },
-    { title: i18next.t('Header.video'), link: config.routes.video.VIDEO + '/1' },
-    { title: i18next.t('Header.news'), link: config.routes.news.NEW + '/1' },
+    {
+        title: i18next.t('Header.wordbooks'),
+        link:
+            config.routes.wordbooks.WORDBOOK + `/${config.getParamaterHeaderSecondnary().wordbooks.menuFilter[0].id}/1`,
+    },
+    { title: i18next.t('Header.video'), link: config.routes.video.VIDEO + '/all/1' },
+    { title: i18next.t('Header.news'), link: config.routes.news.NEW + '/all/1' },
     { title: i18next.t('Header.text_online'), link: config.routes.text_online.TEXT_ONLINE },
     { title: i18next.t('Header.forum'), link: config.routes.forum.MYPOST },
     { title: i18next.t('Header.chat_AI'), link: config.routes.chat_ai.CHAT_AI },

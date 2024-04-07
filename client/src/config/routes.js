@@ -15,19 +15,18 @@ const routes = {
     },
     wordbooks: {
         WORDBOOK: '/wordbooks',
-        WORDBOOKS: '/wordbooks/:page',
-        WORDFOLDER: '/wordbooks/:pageFolder/:idFolder',
-        WORDFOLDERS: '/wordbooks/:pageFolder/:idFolder/:pageWord',
+        WORDBOOKS: '/wordbooks/:categoryName/:page',
+        WORDINFOLDER: '/wordbooks/:categoryId/:idFolder/:pageWord',
     },
     video: {
         VIDEO: '/video',
-        VIDEOS: '/video/:page',
-        VIDEODEDAIL: '/video/:page/:idVideo',
+        VIDEOS: '/video/:categoryName/:page',
+        VIDEODEDAIL: '/video/:categoryId/:idNew/0',
     },
     news: {
         NEW: '/news',
-        NEWS: '/news/:page',
-        NEWDEDAIL: '/news/:page/:idNew',
+        NEWS: '/news/:categoryName/:page',
+        NEWDEDAIL: '/news/:categoryId/:idNew/0',
     },
     text_online: {
         TEXT_ONLINE: '/text_online',

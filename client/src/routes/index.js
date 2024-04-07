@@ -38,7 +38,7 @@ const publicRoutes = [
 
 const privateRoutes = [
     { path: config.routes.wordbooks.WORDBOOKS, element: Wordbooks, layout: DefautLayout },
-    { path: config.routes.wordbooks.WORDFOLDERS, element: ManageWordFolder, layout: DefautLayout },
+    { path: config.routes.wordbooks.WORDINFOLDER, element: ManageWordFolder, layout: DefautLayout },
     { path: config.routes.forum.FORUM, element: Forum, layout: DefautLayout },
     { path: config.routes.forum.MYPOST, element: Forum, layout: DefautLayout },
     { path: config.routes.forum.COMUNITY, element: Forum, layout: DefautLayout },

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import styles from './ItemNews.module.scss';
 import Image from '~/components/Image';
@@ -11,8 +11,13 @@ const cx = classNames.bind(styles);
 function ItemNews({ inforNew }) {
     const navigate = useNavigate();
 
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     const openNewDetail = () => {
-        navigate(inforNew.id);
+        const lastIndex = currentPath.lastIndexOf('/');
+        const pathToOpenFolder = currentPath.slice(0, lastIndex + 1) + String(inforNew?.id) + '/0';
+        navigate(pathToOpenFolder);
     };
 
     return (

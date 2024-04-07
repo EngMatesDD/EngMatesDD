@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import Pagination from '~/components/Pagination';
 import Loading from '~/components/Loading';
-import {  getAllNewsCategories } from '~/services/manageNewsCategoryServices';
+import { getAllNewsCategories } from '~/services/manageNewsCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
 import AddNewsCategory from './AddNewsCategory';

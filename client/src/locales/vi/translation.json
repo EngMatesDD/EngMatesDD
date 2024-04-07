@@ -23,6 +23,10 @@
         "requires_login": "Tính năng này yêu cầu người dùng đăng nhập để truy cập. ",
         "not_access": "Tài khoản đã đăng nhập không thể truy cập trang này"
     },
+    "Operation": {
+        "delete": "delete",
+        "edit": "edit"
+    },
     "Auth": {
         "login": "Đăng nhập",
         "username": "Tên người dùng",
