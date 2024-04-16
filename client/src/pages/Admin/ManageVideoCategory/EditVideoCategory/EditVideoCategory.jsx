@@ -17,8 +17,7 @@ function EditVideoCategory({ setIsPoperEditVideoCategory, onPageChange, oldCateg
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState(oldCategory.name);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageVideoCategory' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const {
         register,

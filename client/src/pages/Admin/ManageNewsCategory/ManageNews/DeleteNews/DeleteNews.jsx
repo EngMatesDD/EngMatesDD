@@ -1,23 +1,18 @@
-// import classNames from 'classnames/bind';
 import { useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
 
-// import styles from './Delete.module.scss';
 import Loading from '~/components/Loading';
 import PopperConfirm from '~/components/PopperConfirm';
 import { deleteNews } from '~/services/manageNewsServices';
 import notify from '~/utils/notify';
 import config from '~/config';
 
-// const cx = classNames.bind(styles);
-
 function DeleteNews({ setIsPoperDeleteNews, newsId }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNews' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const closePoper = () => {
         setIsPoperDeleteNews(false);

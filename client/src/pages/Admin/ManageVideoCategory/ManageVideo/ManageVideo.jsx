@@ -26,8 +26,7 @@ function ManageVideo() {
 
     const navigate = useNavigate();
 
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookies] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageVideo' });
 
     const location = useLocation();

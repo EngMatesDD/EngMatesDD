@@ -13,8 +13,7 @@ function DeleteNewsCategory({ setIsPoperDeleteNewsCategory, categoryId, forceUpd
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNewsCategory' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const closePoper = () => {
         setIsPoperDeleteNewsCategory(false);

@@ -22,14 +22,11 @@ function EditNews({ setIsPoperEditNews, onPageChange, oldNews }) {
     const [title, setTitle] = useState(oldNews.title);
     const [content, setContent] = useState(oldNews.content);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNews' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const {
         register,
         handleSubmit,
-        // eslint-disable-next-line no-unused-vars
-        setError,
         formState: { errors },
     } = useForm();
 

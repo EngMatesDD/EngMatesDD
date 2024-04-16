@@ -17,8 +17,7 @@ function AddWordCategory({ setIsPoperAddWordCategory, onPageChange, forceUpdate 
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageWordCategory' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const {
         register,

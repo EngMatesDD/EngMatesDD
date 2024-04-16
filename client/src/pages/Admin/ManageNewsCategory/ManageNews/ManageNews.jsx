@@ -16,8 +16,6 @@ import EditNews from './EditNew';
 
 function ManageNews() {
     const [allNews, setAllNews] = useState([]);
-    // eslint-disable-next-line no-unused-vars
-    const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
     const [isPoperDeleteNews, setIsPoperDeleteNews] = useState(false);
     const [isPoperAddNews, setIsPoperAddNews] = useState(false);
@@ -26,8 +24,7 @@ function ManageNews() {
     const [newsIdToDelete, setnewsIdToDelete] = useState();
     const [newsToEdit, setNewsToEdit] = useState();
 
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookies] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNews' });
 
     const navigate = useNavigate();
@@ -44,7 +41,6 @@ function ManageNews() {
         await getAllNewsCategoryById(token, categoryId, page - 1)
             .then((result) => {
                 setAllNews(result.newsList);
-                setData(result);
                 setTotalPage(result.totalPage);
                 setLoading(false);
             })

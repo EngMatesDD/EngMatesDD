@@ -1,9 +1,7 @@
-// import classNames from 'classnames/bind';
 import { useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
 
-// import styles from './Delete.module.scss';
 import Loading from '~/components/Loading';
 import PopperConfirm from '~/components/PopperConfirm';
 import { deleteWord } from '~/services/manageWordCategoryServices';
@@ -12,8 +10,6 @@ import config from '~/config';
 import { useLocation } from 'react-router-dom';
 import handleError from '~/utils/handleError';
 
-// const cx = classNames.bind(styles);
-
 function DeleteWord({ setIsPoperDeleteWOrd, wordId, forceUpdate }) {
     const location = useLocation();
     const [loading, setLoading] = useState(false);
@@ -21,8 +17,7 @@ function DeleteWord({ setIsPoperDeleteWOrd, wordId, forceUpdate }) {
     const categoryId = currentPath.split('/')[2];
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageWordCategory' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const closePoper = () => {
         setIsPoperDeleteWOrd(false);

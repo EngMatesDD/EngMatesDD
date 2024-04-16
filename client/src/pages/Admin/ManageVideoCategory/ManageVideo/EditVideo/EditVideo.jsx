@@ -24,16 +24,13 @@ function EditVideo({ setIsPoperEditVideo, onPageChange, oldVideo }) {
     const [description, setDescription] = useState(oldVideo.description);
     const [isKeepOldVideo, setIsKeepOldVideo] = useState(true);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageVideo' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
     const location = useLocation();
     const categoryId = location.pathname.split('/')[2];
 
     const {
         register,
         handleSubmit,
-        // eslint-disable-next-line no-unused-vars
-        setError,
         formState: { errors },
     } = useForm();
 

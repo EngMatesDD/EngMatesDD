@@ -25,8 +25,8 @@ function Lookup() {
     const [haveAntonyms, setHaveAntonyms] = useState(false);
     const [isOpenAllMean, setIsOpenAllMean] = useState(false);
     const [folders, setFolders] = useState([]);
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookies] = useCookies(['token']);
+
+    const [cookies] = useCookies(['token']);
     const [wordId, setWordId] = useState();
 
     const { t } = useTranslation('translation', { keyPrefix: 'Lookup' });

@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
-// import classNames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
 import { useState, Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
 
-// import styles from './EditFolder.module.scss';
 import PopperForm from '~/components/PopperForm';
 import Loading from '~/components/Loading';
 import Input from '~/components/Input';
@@ -15,15 +13,12 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import getValid from '../validateForm';
 
-// const cx = classNames.bind(styles);
-
 function EditFolder({ setIsPoperEditFolder, inforFolder, onPageChange }) {
     const [loading, setLoading] = useState(false);
 
     const { currentPage } = useSelector((state) => state.wordBooks);
     const { t } = useTranslation('translation', { keyPrefix: 'WordBooks' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const {
         register,

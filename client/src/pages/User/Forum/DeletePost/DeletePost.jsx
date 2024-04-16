@@ -17,8 +17,7 @@ function DeletePost({ setIsPoperDeletePost, postId }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'Forum' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const dispatch = useDispatch();
 

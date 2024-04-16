@@ -18,8 +18,7 @@ function DeleteWord({ setIsPoperDeleteWord, inforWord, onPageChange }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageWordFolder' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
     const { currentPage } = useSelector((state) => state.wordBooks);
 
     const closePoper = () => {
