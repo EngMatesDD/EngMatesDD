@@ -1,20 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function Dropdown({ title, options, handleFunction }) {
-    // eslint-disable-next-line no-unused-vars
-    const [selectedOption, setSelectedOption] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef();
-
-    // eslint-disable-next-line no-unused-vars
-    const handleSelect = (option) => {
-        setSelectedOption(option);
-    };
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsOpen(false);
         }
+    };
+
+    const handleClick = async (id) => {
+        await handleFunction(id);
+        setIsOpen(false);
     };
 
     useEffect(() => {
@@ -24,7 +22,7 @@ function Dropdown({ title, options, handleFunction }) {
         };
     }, []);
     return (
-        <div className="relative inline-block w-60 text-left">
+        <div className="relative inline-block w-60 text-left" ref={dropdownRef}>
             <div className="w-full">
                 <span className="w-full rounded-md ">
                     <button
@@ -51,7 +49,7 @@ function Dropdown({ title, options, handleFunction }) {
                         {options.map((option) => (
                             <button
                                 key={option.id}
-                                onClick={() => handleFunction(option.id)}
+                                onClick={() => handleClick(option.id)}
                                 className=" block w-full px-4 py-2 text-left text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none"
                                 role="menuitem"
                             >

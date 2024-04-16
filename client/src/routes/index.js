@@ -13,17 +13,17 @@ import News from '~/pages/User/News';
 import NewDetail from '~/pages/User/News/NewDetail';
 import Video from '~/pages/User/Video';
 import VideoDetail from '~/pages/User/Video/VideoDetail';
+import Forum from '~/pages/User/Forum';
 
 import ManageUser from '~/pages/Admin/ManageUser';
 import ManageNews from '~/pages/Admin/ManageNewsCategory/ManageNews';
 import ManageVideo from '~/pages/Admin/ManageVideoCategory/ManageVideo';
 import ManageWordCategory from '~/pages/Admin/ManageWordCategory';
-import { DefautLayout, AdminLayout } from '~/layout';
 import config from '~/config';
 import ManageWord from '~/pages/Admin/ManageWordCategory/ManageWord';
-import Forum from '~/pages/User/Forum';
 import ManageVideoCategory from '~/pages/Admin/ManageVideoCategory';
 import ManageNewsCategory from '~/pages/Admin/ManageNewsCategory';
+import { DefautLayout, AdminLayout } from '~/layout';
 
 const publicRoutes = [
     { path: config.routes.HOME, element: Home, layout: DefautLayout },
