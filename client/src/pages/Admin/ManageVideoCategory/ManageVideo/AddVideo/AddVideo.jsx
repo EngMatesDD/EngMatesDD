@@ -17,15 +17,13 @@ function AddVideo({ setIsPoperAddVideo, onPageChange }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageVideo' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
     const location = useLocation();
     const categoryId = location.pathname.split('/')[2];
 
     const {
         register,
         handleSubmit,
-        setError,
         formState: { errors },
     } = useForm();
 
@@ -55,7 +53,7 @@ function AddVideo({ setIsPoperAddVideo, onPageChange }) {
         data.append('title', formData.title);
         data.append('description', formData.description);
         data.append('video', formData.video[0]);
-        data.append('categoryId', categoryId)
+        data.append('categoryId', categoryId);
 
         const messeageNotify = config.manageVideo.errorMesseage.getMesseageNotify();
         handleMiddleCreateVideo(data).catch((error) => {
@@ -69,7 +67,7 @@ function AddVideo({ setIsPoperAddVideo, onPageChange }) {
             const { message } = error.response.data;
             const { messeageLogic } = config.manageVideo.errorMesseage;
 
-            if(message === messeageLogic.FILE_NOT_VIDEO){
+            if (message === messeageLogic.FILE_NOT_VIDEO) {
                 notify.error(messeageNotify.FILE_NOT_VIDEO);
                 return;
             }
@@ -104,7 +102,7 @@ function AddVideo({ setIsPoperAddVideo, onPageChange }) {
                     label={t('video')}
                     {...register('video')}
                     errolMesseage={errors.definition?.message}
-                    type='file'
+                    type="file"
                 />
             </PopperForm>
             {loading && <Loading />}

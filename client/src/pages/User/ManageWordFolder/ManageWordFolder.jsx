@@ -30,8 +30,8 @@ function ManageWordFolder() {
     const location = useLocation();
     const navigate = useNavigate();
     const { t } = useTranslation('translation', { keyPrefix: 'ManageWordFolder' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookies] = useCookies(['token']);
+
+    const [cookies] = useCookies(['token']);
 
     const currentPath = location.pathname;
     const currentPage = Number(currentPath.split('/')[4]);

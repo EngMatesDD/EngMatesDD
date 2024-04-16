@@ -7,15 +7,13 @@ import PopperConfirm from '~/components/PopperConfirm';
 import { deleteNewsCategory } from '~/services/manageNewsCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
-import handleError from '~/config/handleError';
-
+import handleError from '~/utils/handleError';
 
 function DeleteNewsCategory({ setIsPoperDeleteNewsCategory, categoryId, forceUpdate }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNewsCategory' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const closePoper = () => {
         setIsPoperDeleteNewsCategory(false);

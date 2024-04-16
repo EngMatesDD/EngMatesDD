@@ -17,8 +17,7 @@ function AddNews({ setIsPoperAddNews, onPageChange }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNews' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const location = useLocation();
 
@@ -27,7 +26,6 @@ function AddNews({ setIsPoperAddNews, onPageChange }) {
     const {
         register,
         handleSubmit,
-        setError,
         formState: { errors },
     } = useForm();
 

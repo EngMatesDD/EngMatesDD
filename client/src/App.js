@@ -8,8 +8,7 @@ import NotAccess from './pages/OtherPage/NotAccess';
 import Error from './pages/OtherPage/NotExist';
 
 function App() {
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const token = cookies.token;
     useEffect(() => {}, [token]);
@@ -63,7 +62,7 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <Layout  listBreadcrumb={route.listBreadcrumb} >
+                                    <Layout listBreadcrumb={route.listBreadcrumb}>
                                         <Page />
                                     </Layout>
                                 }
@@ -80,7 +79,7 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <Layout >
+                                    <Layout>
                                         <Page />
                                     </Layout>
                                 }

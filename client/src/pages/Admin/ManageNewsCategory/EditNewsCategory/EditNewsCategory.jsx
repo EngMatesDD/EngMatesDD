@@ -11,14 +11,13 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import getValid from '../validateForm';
 import { editNewsCategory } from '~/services/manageNewsCategoryServices';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function EditNewsCategory({ setIsPoperEditNewsCategory, onPageChange, oldCategory, forceUpdate }) {
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState(oldCategory.name);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageNewsCategory' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const {
         register,

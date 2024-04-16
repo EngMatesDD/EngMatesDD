@@ -11,14 +11,13 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import getValid from '../validateForm';
 import { editCategory } from '~/services/manageWordCategoryServices';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function EditWordCategory({ setIsPoperEditWordCategory, onPageChange, oldCategory, forceUpdate }) {
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState(oldCategory.name);
     const { t } = useTranslation('translation', { keyPrefix: 'ManageWordCategory' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const {
         register,

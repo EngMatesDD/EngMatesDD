@@ -8,14 +8,13 @@ import Loading from '~/components/Loading';
 import Spinner from '~/components/Spinner';
 import { setAllPostReducer } from '~/redux/allPostForumSlice';
 import config from '~/config';
-import handleError from '~/config/handleError';
 import notify from '~/utils/notify';
 
 function MyPost() {
     const [loading, setLoading] = useState(false);
     const [isLoadingSpinner, setIsLoadingSpinner] = useState(false);
 
-    const [cookie, setCookie] = useCookies(['token']);
+    const [cookie] = useCookies(['token']);
     const [totalPage, setTotalPage] = useState(0);
     const [curentPage, setCurentPage] = useState(1);
 
@@ -44,8 +43,10 @@ function MyPost() {
 
     useEffect(() => {
         getAllPostForumAPI();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleScroll = async () => {
         const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
         if (scrollTop + clientHeight >= scrollHeight - 5 && !isLoadingSpinner) {
@@ -59,7 +60,7 @@ function MyPost() {
                         setTotalPage(result.totalPage);
                         setIsLoadingSpinner(false);
                     })
-                    .catch((error) => {
+                    .catch(() => {
                         setIsLoadingSpinner(false);
                     });
             }
