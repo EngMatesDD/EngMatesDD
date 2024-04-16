@@ -16,22 +16,21 @@ import config from '~/config';
 import getValid from '../validateForm';
 import { createPostReducer } from '~/redux/myPostSlice';
 import { createPostReducer as createPostForumReducer } from '~/redux/allPostForumSlice';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function CreatePost({ setIsPoperCreatePost, onPageChange }) {
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState(null);
 
     const { t } = useTranslation('translation', { keyPrefix: 'Forum' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+
+    const [cookies] = useCookies(['token']);
     const dispatch = useDispatch();
     const fileInputRef = useRef(null);
 
     const {
         register,
         handleSubmit,
-        setError,
         formState: { errors },
     } = useForm();
 

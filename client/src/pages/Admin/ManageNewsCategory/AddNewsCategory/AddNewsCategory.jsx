@@ -11,7 +11,7 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import getValid from '../validateForm';
 import { createNewsCategory } from '~/services/manageNewsCategoryServices';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function AddNewsCategory({ setIsPoperAddNewsCategoryCategory, onPageChange, forceUpdate }) {
     const [loading, setLoading] = useState(false);

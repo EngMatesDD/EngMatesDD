@@ -11,7 +11,7 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import { deletePostByIdReducer } from '~/redux/myPostSlice';
 import { deletePostByIdReducer as deletePostByIdForumReducer } from '~/redux/allPostForumSlice';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function DeletePost({ setIsPoperDeletePost, postId }) {
     const [loading, setLoading] = useState(false);

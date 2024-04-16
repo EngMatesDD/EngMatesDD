@@ -11,7 +11,7 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import getValid from '../validateForm';
 import { editVideoCategory } from '~/services/manageVideoCategoryServices';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function EditVideoCategory({ setIsPoperEditVideoCategory, onPageChange, oldCategory, forceUpdate }) {
     const [loading, setLoading] = useState(false);

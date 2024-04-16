@@ -7,8 +7,7 @@ import PopperConfirm from '~/components/PopperConfirm';
 import { deleteVideoCategory } from '~/services/manageVideoCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
-import handleError from '~/config/handleError';
-
+import handleError from '~/utils/handleError';
 
 function DeleteVideoCategory({ setIsPoperDeleteVideoCategory, categoryId, forceUpdate }) {
     const [loading, setLoading] = useState(false);

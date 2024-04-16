@@ -7,8 +7,7 @@ import PopperConfirm from '~/components/PopperConfirm';
 import { deleteCategory } from '~/services/manageWordCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
-import handleError from '~/config/handleError';
-
+import handleError from '~/utils/handleError';
 
 function DeleteWordCategory({ setIsPoperDeleteWordCategory, categoryId, forceUpdate }) {
     const [loading, setLoading] = useState(false);

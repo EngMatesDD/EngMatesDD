@@ -12,7 +12,7 @@ import PopperMenu from '~/components/PopperMenu';
 import getListItemInMenuPopper from '~/config/listItemInMenuPopper';
 import { deleteCommentOfPost, deleteCommentOfComment } from '~/services/forumService';
 import config from '~/config';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 import notify from '~/utils/notify';
 import Spinner from '~/components/Spinner';
 

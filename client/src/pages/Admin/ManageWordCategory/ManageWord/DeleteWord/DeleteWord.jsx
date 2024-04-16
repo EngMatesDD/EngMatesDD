@@ -10,7 +10,7 @@ import { deleteWord } from '~/services/manageWordCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
 import { useLocation } from 'react-router-dom';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 // const cx = classNames.bind(styles);
 

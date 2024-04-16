@@ -14,7 +14,7 @@ import InputSearch from '~/components/InputSearch';
 import { getWordAllByIdCategory, addWordToCategory } from '~/services/manageWordCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function ManageWord() {
     const location = useLocation();
