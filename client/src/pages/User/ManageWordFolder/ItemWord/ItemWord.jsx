@@ -4,14 +4,14 @@ import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis, faVolumeLow } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
 import { Howl } from 'howler';
 
 import styles from './ItemWord.module.scss';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import PopperMenu from '~/components/PopperMenu';
 import EditWord from '../EditWord';
 import DeleteWord from '../DeleteWord';
 //import Image from '~/components/Image';
+import getListItemInMenuPopper from '~/config/listItemInMenuPopper';
 
 const cx = classNames.bind(styles);
 
@@ -34,31 +34,6 @@ function ItemWord({ inforWord, onPageChange }) {
         soundPlay(inforWord.pronunciationUSAudio);
     };
 
-    const renderResult = (attrs) => (
-        <div className={cx('mr-2')} tabIndex="-1" {...attrs}>
-            <PopperWrapper className={cx('menu-popper', 'overflow-hidden !py-[2px]')}>
-                <div
-                    className={cx(
-                        'menu-item',
-                        'w-full cursor-pointer justify-start px-4 py-[6px] font-semibold leading-[1.125rem]',
-                    )}
-                    onClick={(e) => showPoperEditWord(e)}
-                >
-                    {t('edit')}
-                </div>
-                <div
-                    className={cx(
-                        'menu-item',
-                        'w-full cursor-pointer justify-start px-4 py-[6px] font-semibold leading-[1.125rem]',
-                    )}
-                    onClick={(e) => showPoperDeleteWord(e)}
-                >
-                    {t('delete')}
-                </div>
-            </PopperWrapper>
-        </div>
-    );
-
     const showPoperEditWord = (e) => {
         e.stopPropagation();
         setIsPoperEditWord(true);
@@ -71,16 +46,30 @@ function ItemWord({ inforWord, onPageChange }) {
         document.body.style.overflow = 'hidden';
     };
 
+    const handleClickMenuItem = (e, data) => {
+        switch (data.code) {
+            case 'delete':
+                showPoperDeleteWord(e);
+                break;
+            case 'edit':
+                showPoperEditWord(e);
+                break;
+            default:
+        }
+    };
+
     return (
         <Fragment>
             <div className={cx('itemWord', 'relative mb-6 w-full rounded-lg border-[1px] border-solid p-7 ')}>
                 <div className={cx('flex justify-between')}>
                     <div>
                         <div className={cx('flex')}>
+                            {/* name word */}
                             <div className={cx('mr-2 text-xl font-semibold')}>
                                 {inforWord.name + ' '}
                                 {inforWord.pronunciationUK}
                             </div>
+                            {/* pronounce */}
                             <div className={cx('flex items-center font-normal ')}>
                                 <span className={cx('my-0 ml-[10px] mr-1 !text-black')}>US</span>
                                 <FontAwesomeIcon icon={faVolumeLow} onClick={playSoundUS} />
@@ -88,6 +77,8 @@ function ItemWord({ inforWord, onPageChange }) {
                                 <FontAwesomeIcon icon={faVolumeLow} onClick={playSoundUK} />
                             </div>
                         </div>
+
+                        {/* definition */}
                         <div className={cx('mt-[10px]')}>
                             <div className={cx('font-semibold')}>{t('definition')}</div>
                             <div>
@@ -105,6 +96,7 @@ function ItemWord({ inforWord, onPageChange }) {
                         /> */}
                     </div>
                 </div>
+                {/* example */}
                 {inforWord?.types[0]?.means[0]?.examples?.length !== 0 && (
                     <div className={cx('mt-[10px]')}>
                         <div className={cx('font-semibold ')}>{t('example')}</div>
@@ -115,23 +107,18 @@ function ItemWord({ inforWord, onPageChange }) {
                         </ul>
                     </div>
                 )}
-
-                <Tippy
-                    interactive
-                    delay={[0, 700]}
-                    offset={[12, 8]}
-                    placement="top-end"
-                    zIndex={9}
-                    render={renderResult}
-                >
+                {/* operation to word */}
+                <PopperMenu items={getListItemInMenuPopper().wordBook.Itembox} handleClick={handleClickMenuItem}>
                     <div className={cx('absolute bottom-[5px] right-[10px] cursor-pointer')}>
                         <FontAwesomeIcon icon={faEllipsis} />
                     </div>
-                </Tippy>
+                </PopperMenu>
             </div>
+            {/* popper edit word */}
             {isPoperEditWord && (
                 <EditWord setIsPoperEditWord={setIsPoperEditWord} inforWord={inforWord} onPageChange={onPageChange} />
             )}
+            {/* popper delete word */}
             {isPoperDeleteWord && (
                 <DeleteWord
                     setIsPoperDeleteWord={setIsPoperDeleteWord}

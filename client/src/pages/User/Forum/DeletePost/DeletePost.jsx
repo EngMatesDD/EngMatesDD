@@ -11,14 +11,13 @@ import notify from '~/utils/notify';
 import config from '~/config';
 import { deletePostByIdReducer } from '~/redux/myPostSlice';
 import { deletePostByIdReducer as deletePostByIdForumReducer } from '~/redux/allPostForumSlice';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 
 function DeletePost({ setIsPoperDeletePost, postId }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'Forum' });
-    //eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
 
     const dispatch = useDispatch();
 

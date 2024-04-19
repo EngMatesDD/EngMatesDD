@@ -17,10 +17,7 @@ function ManageUser() {
     const currentPath = location.pathname;
     const currentPage = Number(currentPath.split('/')[2]);
     const [allUser, setAllUser] = useState([]);
-    // eslint-disable-next-line no-unused-vars
-    const [data, setData] = useState();
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookies] = useCookies(['token']);
+    const [cookies] = useCookies(['token']);
     const [loading, setLoading] = useState(false);
     const [isPoperDeleteUser, setIsPoperDeleteUser] = useState(false);
     const [totalPage, setTotalPage] = useState(0);
@@ -35,7 +32,6 @@ function ManageUser() {
         await getAllUser(token, page - 1)
             .then((result) => {
                 setAllUser(result.users);
-                setData(result);
                 setTotalPage(result.totalPage);
                 setLoading(false);
             })
@@ -69,10 +65,10 @@ function ManageUser() {
     };
 
     return (
-        <div className="flex flex-col items-center p-10">
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="flex w-full flex-col items-center p-10">
+            <div className="relative w-full overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-                    <thead className="bg-gray-50 text-base uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-16 py-3">
                                 {t('name')}
@@ -95,7 +91,7 @@ function ManageUser() {
                         {allUser.map((user, index) => (
                             <tr
                                 key={index}
-                                className=" border-b text-base odd:bg-white even:bg-gray-50 hover:bg-gray-100 dark:border-gray-700 odd:dark:bg-gray-900 even:dark:bg-gray-800 dark:hover:bg-gray-600"
+                                className=" border-b odd:bg-white even:bg-gray-50 hover:bg-gray-100 dark:border-gray-700 odd:dark:bg-gray-900 even:dark:bg-gray-800 dark:hover:bg-gray-600"
                             >
                                 <th
                                     scope="row"

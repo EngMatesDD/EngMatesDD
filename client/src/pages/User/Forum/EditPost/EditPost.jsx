@@ -14,7 +14,7 @@ import Input from '~/components/Input';
 import notify from '~/utils/notify';
 import config from '~/config';
 import getValid from '../validateForm';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 import { editPostReducer } from '~/redux/myPostSlice';
 import { editPostReducer as editPostForumReducer } from '~/redux/allPostForumSlice';
 
@@ -25,15 +25,14 @@ function EditPost({ setIsPoperEditPost, oldPost }) {
     const [content, setContent] = useState(oldPost.content);
 
     const { t } = useTranslation('translation', { keyPrefix: 'Forum' });
-    // eslint-disable-next-line no-unused-vars
-    const [cookies, setCookie] = useCookies(['token']);
+
+    const [cookies] = useCookies(['token']);
     const dispatch = useDispatch();
     const fileInputRef = useRef(null);
 
     const {
         register,
         handleSubmit,
-        setError,
         formState: { errors },
     } = useForm();
 

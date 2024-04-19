@@ -138,12 +138,12 @@ function ManageWordCategory() {
                                         {t('manage_word_lists')}
                                     </button>
                                     <FontAwesomeIcon
-                                        className=" text-3xl text-red-500"
+                                        className=" text-xl text-red-500"
                                         icon={faTrash}
                                         onClick={() => showPoperDeleteCategory(category.id)}
                                     />
                                     <FontAwesomeIcon
-                                        className=" text-3xl text-blue-500"
+                                        className=" text-xl text-blue-500"
                                         icon={faEdit}
                                         onClick={() => showPoperEditCategory(category)}
                                     />

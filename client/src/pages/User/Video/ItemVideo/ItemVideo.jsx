@@ -1,20 +1,24 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import styles from './ItemVideo.module.scss';
 import Image from '~/components/Image';
 import ImgVideo from './imgVideo.jpg';
 import noImageAvatar from '~/assets/img/noImageAvatar.png';
-import config from '~/config';
 
 const cx = classNames.bind(styles);
 
 function ItemVideo({ inforVideo, pageDetail }) {
     const navigate = useNavigate();
 
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     const openNewDetail = () => {
-        navigate(config.routes.video.VIDEO + '/*/' + inforVideo.id);
+        const lastIndex = currentPath.lastIndexOf('/');
+        const pathToOpenFolder = currentPath.slice(0, lastIndex + 1) + String(inforVideo?.id) + '/0';
+        navigate(pathToOpenFolder);
     };
 
     return (
@@ -29,7 +33,12 @@ function ItemVideo({ inforVideo, pageDetail }) {
                     { 'w-full justify-between': pageDetail },
                 )}
             >
-                <Image className={cx('h-[150px] w-full', { 'h-[92px] !w-[170px]': pageDetail })} src={ImgVideo} />
+                {inforVideo ? (
+                    <video src={inforVideo.url}></video>
+                ) : (
+                    <Image className={cx('h-[150px] w-full', { 'h-[92px] !w-[170px]': pageDetail })} src={ImgVideo} />
+                )}
+
                 <div className={cx({ 'w-[170px] text-sm': pageDetail })}>
                     <div className={cx('mt-2 font-semibold leading-4', { '!mt-0': pageDetail })}>
                         {inforVideo?.title || 'name is not avaiable'}
@@ -49,6 +58,6 @@ function ItemVideo({ inforVideo, pageDetail }) {
     );
 }
 
-ItemVideo.propTypes = { inforVideo: PropTypes.object.isRequired };
+ItemVideo.propTypes = { inforVideo: PropTypes.object };
 
 export default ItemVideo;

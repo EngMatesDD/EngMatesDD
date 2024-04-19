@@ -1,21 +1,20 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Button from '~/components/Button';
 
 const cx = classNames;
 
 function MenuItem({ data, onClick }) {
     const classes = cx(
-        'w-full !justify-start rounded-none py-[11px] px-4 leading-4 font-semibold ml-0',
-        'hover:bg-background-color-secondnary',
+        '!justify-start rounded-none ml-0 w-full justify-start px-4 py-[6px] font-semibold leading-[1.125rem]',
+        'hover:bg-background-color-secondnary cursor-pointer',
         {
             'border-t border-solid border-stone-300': data.separate,
         },
     );
     return (
-        <Button className={classes} onClick={() => onClick(data)}>
+        <div className={classes} onClick={(e) => onClick(e, data)}>
             {data.content}
-        </Button>
+        </div>
     );
 }
 

@@ -8,24 +8,28 @@ import HeaderSecondnary from '~/components/HeaderSecondnary';
 import ItemVideo from './ItemVideo';
 import Pagination from '~/components/Pagination';
 import Loading from '~/components/Loading';
-import { getAllVideos } from '~/services/videoService';
+import { getAllVideos } from '~/services/manageVideoServices';
+import { getAllVideoCategories, getVideosCategoryById } from '~/services/manageVideoCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
 
 function Video() {
+    const [listCategories, setListCategories] = useState([]);
     const [loading, setLoading] = useState(false);
     const [listVideo, setListVideo] = useState([]);
     const [totalPage, setTotalPage] = useState(1);
 
     const [cookies] = useCookies(['token']);
+    const token = cookies.token;
 
     const location = useLocation();
     const navigate = useNavigate();
 
     const currentPath = location.pathname;
-    const currentPage = Number(currentPath.split('/')[2]);
+    const [idCategory, setIdCategory] = useState(String(currentPath.split('/')[2]));
+    const [currentPage, setCurrentPage] = useState(Number(currentPath.split('/')[3]));
 
     const paramater = config.getParamaterHeaderSecondnary().Video;
 
@@ -33,12 +37,22 @@ function Video() {
         const index = currentPath.lastIndexOf('/');
         const pathToPageChanged = currentPath.slice(0, index + 1) + String(value);
         navigate(pathToPageChanged);
+        setCurrentPage(value);
     };
 
-    useEffect(() => {
+    const changeCategory = (index) => {
+        const IdCategory = listCategories[index].id;
+        const lastIndex = currentPath.lastIndexOf('/');
+        const secondLastIndex = currentPath.lastIndexOf('/', lastIndex - 1);
+        const pathToChangedCategory = currentPath.slice(0, secondLastIndex + 1) + String(IdCategory) + '/1';
+        navigate(pathToChangedCategory);
+        setCurrentPage(1);
+        setIdCategory(IdCategory);
+    };
+
+    const getAll = async () => {
         setLoading(true);
-        const token = cookies.token;
-        getAllVideos(token, currentPage - 1, listVideo.size)
+        await getAllVideos(token, currentPage - 1, listVideo.size)
             .then((result) => {
                 setLoading(false);
                 setListVideo(result.videos);
@@ -53,15 +67,68 @@ function Video() {
                     return;
                 }
             });
+    };
+
+    const getVideosOfCategory = async () => {
+        setLoading(true);
+        await getVideosCategoryById(token, idCategory, currentPage - 1, listVideo.size)
+            .then((result) => {
+                setLoading(false);
+                setListVideo(result.videos);
+                setTotalPage(result.totalPage);
+                return;
+            })
+            .catch((error) => {
+                setLoading(false);
+                const messeageNotify = config.errorMesseage.getMesseageNotify();
+                if (!error.response) {
+                    notify.error(messeageNotify.ERROR_NETWORD);
+                    return;
+                }
+            });
+    };
+
+    useEffect(() => {
+        setLoading(true);
+        getAllVideoCategories(token)
+            .then((result) => {
+                setLoading(false);
+                const listVideosCategories = result.videoCategories.map((category) => ({
+                    id: category.id,
+                    label: category.name,
+                    title: category.name,
+                }));
+                const categoryAll = [{ id: 'all', label: 'tất cả', title: 'tất cả' }];
+                setListCategories([...categoryAll, ...listVideosCategories]);
+                return;
+            })
+            .catch((error) => {
+                setLoading(false);
+                const messeageNotify = config.errorMesseage.getMesseageNotify();
+                if (!error.response) {
+                    notify.error(messeageNotify.ERROR_NETWORD);
+                    return;
+                }
+            });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage]);
+    }, []);
+
+    useEffect(() => {
+        if (idCategory === 'all') {
+            getAll();
+        } else {
+            getVideosOfCategory();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage, idCategory]);
     return (
         <div className={cx('mb-[40px] w-full')}>
             <HeaderSecondnary
                 iconTitle={paramater.iconTitle}
                 title={paramater.title}
                 backgroundColor={paramater.backgroundColor}
-                menuFilter={paramater.menuFilter}
+                menuFilter={listCategories}
+                onChange={changeCategory}
             />
             <div
                 className={cx(

@@ -7,6 +7,12 @@ const getListItemInMenuPopper = () => ({
     chatAI: {
         ItemChat: [{ code: 'delete', content: i18next.t('Operation.delete') }],
     },
+    wordBook: {
+        Itembox: [
+            { code: 'edit', content: i18next.t('Operation.edit') },
+            { code: 'delete', content: i18next.t('Operation.delete') },
+        ],
+    },
 });
 
 export default getListItemInMenuPopper;

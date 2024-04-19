@@ -11,7 +11,7 @@ import ItemComment from '../ItemComment';
 import Spinner from '~/components/Spinner';
 import { getCommentOfComment, createComment } from '~/services/forumService';
 import config from '~/config';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 import notify from '~/utils/notify';
 
 const cx = classNames;

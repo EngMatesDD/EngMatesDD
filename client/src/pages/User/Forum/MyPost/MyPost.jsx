@@ -8,7 +8,7 @@ import Spinner from '~/components/Spinner';
 import { getAllMyPost } from '~/services/forumService';
 import { setAllPostReducer } from '~/redux/myPostSlice';
 import config from '~/config';
-import handleError from '~/config/handleError';
+import handleError from '~/utils/handleError';
 import notify from '~/utils/notify';
 
 function MyPost() {
@@ -22,7 +22,7 @@ function MyPost() {
     const dispatch = useDispatch();
 
     const allPost = useSelector((state) => state.myPost.allPost);
-
+    console.log(allPost);
     const getAllMyPostAPI = async () => {
         setLoading(true);
         const token = cookie.token;

@@ -10,8 +10,8 @@ const api = {
     },
     user: {
         GETME: 'user/me',
-        GETALLUSER: 'user/all',
-        DELETEUSER: 'user',
+        GETALLUSER: 'system/user/all',
+        DELETEUSER: 'system/user',
     },
     lookup: {
         SEARCH: 'words/name',
@@ -28,17 +28,17 @@ const api = {
     },
     news: {
         GETALL: '/news/all',
-        CREATE: '/news',
-        EDIT: '/news',
-        DELETE: '/news',
+        CREATE: '/system/news',
+        EDIT: '/system/news',
+        DELETE: '/system/news',
         GETDETAIL: '/news',
     },
     video: {
         GETALL: '/videos/all',
         GET: '/videos',
-        CREATE: '/videos',
-        EDIT: '/videos',
-        DELETE: '/videos',
+        CREATE: '/system/videos',
+        EDIT: '/system/videos',
+        DELETE: '/system/videos',
     },
     wordCategory: {
         GETALL: '/wordCategory/all',
@@ -65,6 +65,20 @@ const api = {
         DELETECMTOFPOST: '/comments/ofPost',
         DELETECMTOFCMT: '/comments/ofComment',
         CREATECMT: '/comments',
+    },
+    videoCategory: {
+        GETALL: '/videoCategory/all',
+        CREATE: '/videoCategory',
+        EDIT: '/videoCategory',
+        DELETE: '/videoCategory',
+        GETBYID: '/videoCategory',
+    },
+    newsCategory: {
+        GETALL: '/newsCategory/all',
+        CREATE: '/newsCategory',
+        EDIT: '/newsCategory',
+        DELETE: '/newsCategory',
+        GETBYID: '/newsCategory',
     },
 };
 
