@@ -31,5 +31,11 @@ public class ChatAIController {
         return chatAIService.getAllChatAI(user.getId());
     }
 
+    @DeleteMapping("/{id}")
+    public ChatAI deleteChat(@PathVariable String id, @CurrentUser UserDetails userDetails) {
+        User user = (User) userDetails;
+        return chatAIService.deleteChatAI(user.getId(), id);
+    }
+
 
 }

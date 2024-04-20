@@ -10,4 +10,5 @@ public interface ChatAIRepository extends MongoRepository<ChatAI, String> {
     ChatAI findChatAIByUserIdAndId(String userId, String id);
 
     List<ChatAI> findAllByUserId(String userId);
+
 }

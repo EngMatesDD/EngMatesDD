@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -65,7 +62,6 @@ public class ChatAIService {
                 }
             } else {
                 messages.add(Map.of("role", "system", "content", "You are a helpful assistant."));
-                chatAI.getHistories().add(ChatHistory.builder().role("system").message("You are a helpful assistant.").build());
             }
 
             messages.add(Map.of("role", "user", "content", userInput));
@@ -93,6 +89,14 @@ public class ChatAIService {
     }
 
     public List<ChatAI> getAllChatAI(String userId) {
-        return chatAIRepository.findAllByUserId(userId);
+        List<ChatAI> chatAis = chatAIRepository.findAllByUserId(userId);
+        Collections.reverse(chatAis);
+        return chatAis;
+    }
+
+    public ChatAI deleteChatAI(String userId, String chatId) {
+        ChatAI chatAI = chatAIRepository.findChatAIByUserIdAndId(userId, chatId);
+        chatAIRepository.delete(chatAI);
+        return chatAI;
     }
 }
