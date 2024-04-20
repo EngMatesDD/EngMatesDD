@@ -99,4 +99,11 @@ public class ChatAIService {
         chatAIRepository.delete(chatAI);
         return chatAI;
     }
+
+    public ChatAI updateTitle(String userId, String chatId, String title) {
+        ChatAI chatAI = chatAIRepository.findChatAIByUserIdAndId(userId, chatId);
+        chatAI.setTitle(title);
+        chatAIRepository.save(chatAI);
+        return chatAI;
+    }
 }

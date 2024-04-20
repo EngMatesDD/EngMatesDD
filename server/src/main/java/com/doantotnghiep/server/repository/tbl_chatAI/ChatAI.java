@@ -19,5 +19,8 @@ public class ChatAI {
     private String userId;
 
     @Field
+    private String title;
+
+    @Field
     private List<ChatHistory> histories;
 }
