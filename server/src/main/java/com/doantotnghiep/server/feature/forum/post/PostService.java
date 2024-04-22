@@ -190,12 +190,7 @@ public class PostService {
                 .totalPage(totalPage)
                 .build();
 
-        Post testpost = new Post();
-        testpost.setTitle("test");
-        postRepository.save(testpost);
-        throw new ResponseException("error", HttpStatus.BAD_REQUEST, 400);
-
-//        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(response);
     }
 
     public ResponseEntity<AllPostResponse> getAllPost(Integer page, Integer size) throws ResponseException {
