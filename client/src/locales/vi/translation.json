@@ -24,8 +24,9 @@
         "not_access": "Tài khoản đã đăng nhập không thể truy cập trang này"
     },
     "Operation": {
-        "delete": "delete",
-        "edit": "edit"
+        "delete": "xóa",
+        "edit": "chỉnh sửa",
+        "rename": "đổi tên"
     },
     "Auth": {
         "login": "Đăng nhập",
@@ -205,6 +206,9 @@
     },
     "Translation": {
         "translating": "Đang dịch..."
+    },
+    "ChatAI": {
+        "message_chat": "Nhập tin nhắn..."
     },
     "ManageUser": {
         "name": "Tên",

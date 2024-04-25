@@ -36,8 +36,8 @@ const getParamaterHeaderSecondnary = () => ({
         title: i18next.t('Forum.forum'),
         backgroundColor: ['rgba(204, 238, 188, 0.8)', 'rgba(191, 234, 245, 0.8)'],
         menuFilter: [
-            { label: 'My post', title: i18next.t('Forum.my_post'), namePage: 'my_post' },
-            { label: 'Comunity', title: i18next.t('Forum.comunity'), namePage: 'comunity' },
+            { id: 'my_post', label: 'My post', title: i18next.t('Forum.my_post'), namePage: 'my_post' },
+            { id: 'comunity', label: 'Comunity', title: i18next.t('Forum.comunity'), namePage: 'comunity' },
         ],
     },
 });

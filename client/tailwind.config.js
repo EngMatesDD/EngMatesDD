@@ -13,6 +13,8 @@ module.exports = {
                 'background-color-secondnary': 'var(--background-color-secondnary)',
                 'background-button': 'var(--background-button)',
                 'background-button-red': 'var(--background-button-red)',
+                'default-layout-header-height': '--default-layout-header-height',
+                'height-chatAI': '--height-chatAI',
             },
         },
     },

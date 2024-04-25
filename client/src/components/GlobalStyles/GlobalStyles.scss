@@ -13,6 +13,8 @@ $width-mobile: 768px;
     --default-layout-width: 1360px;
     --default-layout-horizontal-spacer: 24px;
 
+    --height-chatAI: calc(100vh-var(--default-layout-header-height));
+
     // --width-search: 500px;
     --text-color: rgb(22, 24, 35);
     --text-color-secondnary: #ffffff;

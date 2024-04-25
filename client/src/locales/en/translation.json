@@ -25,7 +25,8 @@
     },
     "Operation": {
         "delete": "delete",
-        "edit": "edit"
+        "edit": "edit",
+        "rename": "rename"
     },
     "Auth": {
         "login": "Login",
@@ -346,5 +347,8 @@
         "just_finished": "just finished",
         "see_more_feedback": "See more feedback",
         "delete": "delete"
+    },
+    "ChatAI": {
+        "message_chat": "message chat AI..."
     }
 }

@@ -28,6 +28,7 @@ function MyPost() {
         const token = cookie.token;
         await getAllMyPost(token)
             .then((result) => {
+                console.log('hello');
                 dispatch(setAllPostReducer(result.listPost));
                 setTotalPage(result.totalPage);
                 setLoading(false);
