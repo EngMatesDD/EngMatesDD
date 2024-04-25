@@ -32,24 +32,24 @@ function Translation() {
         inputRef.current.focus();
     }, []);
 
+    const handleTranslate = async () => {
+        const token = cookies.token;
+        setOutputTranslation(t('translating'));
+        await setTranslate({ isRelease: true }, token);
+        const data = {
+            text: debouncedValue,
+            to: ouputLanguage.code,
+        };
+        const resultTranslate = await translate(data, token);
+        setOutputTranslation(resultTranslate);
+        await setTranslate({ isRelease: false }, token);
+    };
+
     useEffect(() => {
         if (!debouncedValue.trim()) {
             setOutputTranslation('');
             return;
         }
-
-        const handleTranslate = async () => {
-            const token = cookies.token;
-            setOutputTranslation(t('translating'));
-            await setTranslate({ isRelease: true }, token);
-            const data = {
-                text: debouncedValue,
-                to: ouputLanguage.code,
-            };
-            const resultTranslate = await translate(data, token);
-            setOutputTranslation(resultTranslate);
-            await setTranslate({ isRelease: false }, token);
-        };
 
         handleTranslate().catch((error) => {
             const messeageNotify = config.errorMesseage.getMesseageNotify();
