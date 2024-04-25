@@ -64,7 +64,7 @@ function DeletePost({ setIsPoperDeletePost, postId }) {
 
 DeletePost.propTypes = {
     setIsPoperDeletePost: PropTypes.func.isRequired,
-    inforFolder: PropTypes.object.isRequired,
+    inforFolder: PropTypes.object,
 };
 
 export default DeletePost;

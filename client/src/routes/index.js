@@ -44,6 +44,7 @@ const privateRoutes = [
     { path: config.routes.forum.MYPOST, element: Forum, layout: DefautLayout },
     { path: config.routes.forum.COMUNITY, element: Forum, layout: DefautLayout },
     { path: config.routes.chat_ai.CHAT_AI, element: ChatAI, layout: OnlyHeaderLayout },
+    { path: config.routes.chat_ai.CHAT_AIS, element: ChatAI, layout: OnlyHeaderLayout },
 ];
 
 const adminRoutes = [

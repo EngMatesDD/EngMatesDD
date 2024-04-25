@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 
 import styles from './AdminLayout.module.scss';
 import Header from '../Header/HeaderAdmin';
-import Breadcrumb from '~/components/Breadcrumb';
 
 const cx = classNames.bind(styles);
 

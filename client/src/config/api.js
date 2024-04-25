@@ -66,6 +66,12 @@ const api = {
         DELETECMTOFCMT: '/comments/ofComment',
         CREATECMT: '/comments',
     },
+    chatAI: {
+        GETALLCHAT: '/chat/all',
+        SENDCHAT: '/chat',
+        DELETECHAT: '/chat',
+        RENAME: '/chat',
+    },
     videoCategory: {
         GETALL: '/videoCategory/all',
         CREATE: '/videoCategory',

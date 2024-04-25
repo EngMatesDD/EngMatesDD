@@ -38,6 +38,7 @@ const routes = {
     },
     chat_ai: {
         CHAT_AI: '/chat_ai',
+        CHAT_AIS: '/chat_ai/:idChat',
     },
     game: {
         GAME: '/game',

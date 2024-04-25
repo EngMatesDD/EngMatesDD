@@ -9,12 +9,12 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import NoimageAvatar from '~/assets/img/noImageAvatar.png';
 import Feedback from '../Feedback';
 import PopperMenu from '~/components/PopperMenu';
+import Spinner from '~/components/Spinner';
 import getListItemInMenuPopper from '~/config/listItemInMenuPopper';
 import { deleteCommentOfPost, deleteCommentOfComment } from '~/services/forumService';
 import config from '~/config';
 import handleError from '~/utils/handleError';
 import notify from '~/utils/notify';
-import Spinner from '~/components/Spinner';
 
 const cx = classNames;
 

@@ -23,7 +23,7 @@ function PopperMenu({ children, items = [], handleClick = defaultFn }) {
     );
 
     return (
-        <Tippy interactive delay={[0, 700]} offset={[12, 8]} render={renderResult}>
+        <Tippy interactive delay={[0, 700]} offset={[1, 2]} render={renderResult}>
             {children}
         </Tippy>
     );

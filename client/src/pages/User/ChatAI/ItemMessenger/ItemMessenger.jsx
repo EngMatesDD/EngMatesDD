@@ -1,19 +1,24 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
+import Spinner from '~/components/Spinner';
 
 const cx = classNames;
 
-function ItemMessenger({ isUser }) {
+function ItemMessenger({ isUser, content, loading }) {
     return (
         <div className={cx('relative mt-4 flex', { 'justify-end': isUser, 'justify-start': !isUser })}>
             <div className={cx('max-w-[90%] rounded-2xl bg-blue-400 px-3 py-2')}>
-                Anh là 1 kỹ sư IT ngành K*** KSTN tốt nghiệp BK đã hơn 1 thập kỷ. Năm xưa mỗi lần đứng dưới cổng Ký túc
-                xá BK Hòa Hỏa Quận 10 thấy chúng nó đứng đợi chở nhau đi chơi cuối tuần mà ko ai pick anh cả. Anh cũng
-                tuổi thân lắm. Anh đẹp trai mà, lại học giỏi nữa. Giờ ở tuổi 3x, là kỹ sư từng làm việc cho Goo.., là
-                người Mỹ Gốc Việt. Anh phải chịu cảnh ế vợ. Ko để lại gen thông minh cho mai sao. Nên ta nói các sư tỷ
-                BK của máy em có nhiều cô ko có não là vậy.
+                {loading ? <Spinner className={'!h-4 !w-4'} /> : content}
             </div>
         </div>
     );
 }
+
+ItemMessenger.propTypes = {
+    isUser: PropTypes.bool,
+    content: PropTypes.string,
+    loading: PropTypes.bool,
+};
 
 export default ItemMessenger;
