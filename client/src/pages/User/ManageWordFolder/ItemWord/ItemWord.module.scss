@@ -1,0 +1,13 @@
+.itemWord {
+    border: rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.15) 2.5px 2.5px 2.6px;
+}
+.menu-popper {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.menu-item {
+    &:hover {
+        background-color: var(--background-color-secondnary);
+    }
+}

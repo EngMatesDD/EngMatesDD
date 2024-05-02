@@ -1,0 +1,101 @@
+@import '/src/components/GlobalStyles/GlobalStyles';
+
+//layout
+.header {
+    height: var(--default-layout-header-height);
+    box-shadow: 0px 3px 3px rgb(0 0 0 / 12%);
+    background-color: var(--background-color);
+}
+
+.inner {
+    padding: 0 var(--default-layout-horizontal-spacer);
+}
+
+//logo
+
+.logo-link {
+    img {
+        height: calc(var(--default-layout-header-height) - 10px);
+    }
+}
+
+//navigation
+
+.navigation-item {
+    // display: flex;
+    // align-items: center;
+    // height: 100%;
+    // padding: 0 8px;
+    // font-size: 0.90625rem;
+    // font-weight: 600;
+    // cursor: pointer;
+
+    &:hover {
+        background-color: var(--background-color-secondnary);
+        border-bottom: 3px solid var(--text-color-link-hightlight);
+        border-top: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-left: 3px solid transparent;
+    }
+
+    a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        color: var(--primary);
+        &:hover {
+            color: var(--text-color-link-hightlight);
+        }
+    }
+}
+
+.navigation-item-curent {
+    border-bottom: 3px solid #b799ff;
+    border-top: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    a {
+        color: #b799ff;
+    }
+}
+//}
+
+//open Search,close Search
+.open-search,
+.close-search {
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--background-button);
+    display: none;
+}
+
+//action
+@media (max-width: $width-ipad) {
+    .logo-link {
+        img {
+            height: calc(var(--default-layout-header-height) - 20px);
+        }
+    }
+    .navigation {
+        top: calc(var(--default-layout-header-height) + 1px);
+        background-color: var(--background-color);
+    }
+
+    .navigation-active {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navigation-item {
+        border-bottom: 1px solid var(--text-color-link-hightlight);
+    }
+}
+
+@media (max-width: $width-mobile) {
+    .open-search,
+    .close-search {
+        display: block;
+    }
+}

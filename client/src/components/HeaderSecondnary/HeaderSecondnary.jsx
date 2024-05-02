@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './HeaderSecondnary.module.scss';
@@ -11,28 +11,35 @@ const cx = classNames.bind(styles);
 const defaultFn = () => {};
 
 function HeaderSecondnary({ iconTitle, title, backgroundColor, menuFilter, onChange = defaultFn }) {
-    const [indexFilter, setIndexFilder] = useState(0);
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const nameCategory = String(currentPath.split('/')[2]);
+
     const styles = {
         background: 'linear-gradient(' + backgroundColor[0] + ',' + backgroundColor[1] + ')',
     };
 
-    const handleFilter = (item, index) => {
-        setIndexFilder(index);
-        onChange(item);
+    const handleFilter = (index) => {
+        onChange(index);
     };
+
     return (
-        <div className={cx('wrapper')} style={styles}>
-            <div className={cx('title')}>
-                <FontAwesomeIcon icon={iconTitle} className={cx('icon')} />
-                <span className={cx('content')}>{title}</span>
+        <div className={cx('relative h-auto w-full pb-5 pt-10', 'wrapper')} style={styles}>
+            {/* title */}
+            <div className={cx('text-3xl', 'title')}>
+                <FontAwesomeIcon icon={iconTitle} className={cx('mr-3', 'icon')} />
+                <span className={cx('font-semibold')}>{title}</span>
             </div>
-            <div className={cx('menu')}>
+            {/* list item */}
+            <div className={cx('mt-10 flex flex-wrap gap-3 overflow-x-auto')}>
                 {menuFilter.map((item, index) => (
                     <Button
                         key={index}
-                        className={cx('btn-filter', { 'btn-active': indexFilter === index })}
+                        className={cx('mr-5 px-4 py-1', 'btn-filter', {
+                            'btn-active': nameCategory === menuFilter[index].id,
+                        })}
                         rounded
-                        onClick={() => handleFilter(item, index)}
+                        onClick={() => handleFilter(index)}
                     >
                         {item.title}
                     </Button>

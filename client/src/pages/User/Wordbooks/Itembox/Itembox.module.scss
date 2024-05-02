@@ -1,0 +1,13 @@
+.icon {
+    color: var(--text-color-link);
+}
+
+.menu-popper {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.menu-item {
+    &:hover {
+        background-color: var(--background-color-secondnary);
+    }
+}
