@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie';
 
 import styles from './Login.module.scss';
 import Input from '~/components/Input';
-import WrapperAuth from '~/components/WrapperAuth';
+import WrapperAuth from '../WrapperAuth';
 import Button from '~/components/Button';
 import Loading from '~/components/Loading';
 import { login } from '~/services/authServices';
@@ -59,9 +59,11 @@ function Login() {
             localStorage.setItem('name', user.name);
             localStorage.setItem('username', user.username);
             localStorage.setItem('avatar', user.avatar);
+            localStorage.setItem('role', user.role);
             dispatch(deleteInforVerify());
             notify.success(config.notification().LOGIN_SUCCESS);
-            navigate(config.routes.HOME);
+            if (user.role === 'USER') navigate(config.routes.HOME);
+            if (user.role === 'ADMIN') navigate('/manage_user/1');
         };
         handleLogin().catch((error) => {
             setLoading(false);
@@ -115,16 +117,20 @@ function Login() {
                         {...register('password', valid.password)}
                         errolMesseage={errors.password?.message}
                     />
-                    <Button className={cx('btn')} primary rounded>
+                    <Button primary rounded>
                         {t('login')}
                     </Button>
                 </form>
-                <Button className={cx('btn', 'btn-google')} red rounded leftIcon={faGoogle}>
+                <Button className={cx('mt-5')} red rounded leftIcon={faGoogle}>
                     {t('login_with_google')}
                 </Button>
-                <div className={cx('modifer')} id="modifer">
-                    <Link to={config.routes.auth.FORGETPASSWORD}>{t('forgot_password')}</Link>
-                    <Link to={config.routes.auth.SIGNUP}>{t('signup')}</Link>
+                <div className={cx('mt-5 flex justify-between ')}>
+                    <Link className={cx('hover:underline')} to={config.routes.auth.FORGETPASSWORD}>
+                        {t('forgot_password')}
+                    </Link>
+                    <Link className={cx('hover:underline')} to={config.routes.auth.SIGNUP}>
+                        {t('signup')}
+                    </Link>
                 </div>
             </WrapperAuth>
             {loading && <Loading />}

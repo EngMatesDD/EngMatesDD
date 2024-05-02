@@ -6,6 +6,17 @@ import notification from './Auth/notification';
 import language from './language';
 import getParamaterHeaderSecondnary from './paramaterHeaderSecondnary';
 import wordsbooks from './WordsBooks';
+import manageWordFolder from './ManageWordFolder';
+import manageUser from './ManageUser';
+import manageNews from './ManageNews';
+import manageVideo from './ManageVideo';
+import ManageWordCategory from './ManageWordCategory';
+import ManageWordInCategory from './ManageWordInCategory';
+import ManageVideoCategory from './ManageVideoCategory';
+import ManageNewsCategory from './ManageNewsCategory';
+import lookup from './Lookup';
+import forum from './Forum';
+import getListItemInMenuPopper from './listItemInMenuPopper';
 
 const config = {
     routes,
@@ -16,6 +27,17 @@ const config = {
     language,
     getParamaterHeaderSecondnary,
     wordsbooks,
+    manageWordFolder,
+    manageUser,
+    manageNews,
+    manageVideo,
+    ManageWordCategory,
+    ManageWordInCategory,
+    ManageVideoCategory,
+    ManageNewsCategory,
+    forum,
+    lookup,
+    getListItemInMenuPopper,
 };
 
 export default config;

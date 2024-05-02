@@ -10,17 +10,82 @@ const api = {
     },
     user: {
         GETME: 'user/me',
+        GETALLUSER: 'system/user/all',
+        DELETEUSER: 'system/user',
     },
     lookup: {
         SEARCH: 'words/name',
+        WORDCONTAIN: 'words/search',
+        ADDWORDTOFOLDER: '/words/folder',
     },
     wordbooks: {
         GETALL: '/folders/all',
         CREATEFOLDER: '/folders',
         EDITFOLDER: '/folders',
         DELETEFOLDER: '/folders',
+        GETALLTOADD: '/folders/all/toAdd',
+        WORDINFOLDER: '/wordFolder/folder',
     },
-
+    news: {
+        GETALL: '/news/all',
+        CREATE: '/system/news',
+        EDIT: '/system/news',
+        DELETE: '/system/news',
+        GETDETAIL: '/news',
+    },
+    video: {
+        GETALL: '/videos/all',
+        GET: '/videos',
+        CREATE: '/system/videos',
+        EDIT: '/system/videos',
+        DELETE: '/system/videos',
+    },
+    wordCategory: {
+        GETALL: '/wordCategory/all',
+        CREATE: '/wordCategory',
+        EDIT: '/wordCategory',
+        DELETE: '/wordCategory',
+        ALLWORD: '/wordCategory',
+        DELETEWORD: '/words/category',
+        ADDWORD: '/words/category',
+    },
+    translation: {
+        GETTRANSLATE: '/translate/isRelease',
+        SETTRANSLATE: '/translate/isRelease',
+        TRANSLATE: '/translate',
+    },
+    forum: {
+        GETALLMYPOST: '/posts/all/myPost',
+        CREATEPOST: '/posts',
+        EDITPOST: '/posts',
+        DELETEPOST: '/posts',
+        GETALL: '/posts/all',
+        GETALLCMT: '/posts/comments',
+        GETCMTBYCMT: '/comments/ofComment',
+        DELETECMTOFPOST: '/comments/ofPost',
+        DELETECMTOFCMT: '/comments/ofComment',
+        CREATECMT: '/comments',
+    },
+    chatAI: {
+        GETALLCHAT: '/chat/all',
+        SENDCHAT: '/chat',
+        DELETECHAT: '/chat',
+        RENAME: '/chat',
+    },
+    videoCategory: {
+        GETALL: '/videoCategory/all',
+        CREATE: '/videoCategory',
+        EDIT: '/videoCategory',
+        DELETE: '/videoCategory',
+        GETBYID: '/videoCategory',
+    },
+    newsCategory: {
+        GETALL: '/newsCategory/all',
+        CREATE: '/newsCategory',
+        EDIT: '/newsCategory',
+        DELETE: '/newsCategory',
+        GETBYID: '/newsCategory',
+    },
 };
 
 export default api;

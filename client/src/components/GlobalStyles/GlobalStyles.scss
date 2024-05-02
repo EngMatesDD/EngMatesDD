@@ -1,8 +1,8 @@
 // @import 'normalize.css';
 
 //responsive
-$width-ipad: 1260px;
-$width-mobile: 800px;
+$width-ipad: 1280px;
+$width-mobile: 768px;
 
 :root {
     --primary: #82aae3;
@@ -12,6 +12,8 @@ $width-mobile: 800px;
     --default-layout-header-height: 60px;
     --default-layout-width: 1360px;
     --default-layout-horizontal-spacer: 24px;
+
+    --height-chatAI: calc(100vh-var(--default-layout-header-height));
 
     // --width-search: 500px;
     --text-color: rgb(22, 24, 35);
@@ -31,12 +33,8 @@ $width-mobile: 800px;
     box-sizing: border-box;
 }
 
-html {
-    font-size: 62.5%;
-}
-
 body {
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-family: var(--font-family);
     line-height: 1.5;
     text-rendering: optimizespeed;
@@ -77,8 +75,8 @@ body {
     .tippy-box {
         border-radius: 8px;
         font-weight: 600;
-        font-size: 1.6rem;
-        line-height: 2.2rem;
+        font-size: 1rem;
+        line-height: 1.375rem;
         background-color: rgba(84, 84, 84, 0.92);
     }
 
