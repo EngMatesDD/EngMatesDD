@@ -22,13 +22,11 @@ function MyPost() {
     const dispatch = useDispatch();
 
     const allPost = useSelector((state) => state.myPost.allPost);
-    console.log(allPost);
     const getAllMyPostAPI = async () => {
         setLoading(true);
         const token = cookie.token;
         await getAllMyPost(token)
             .then((result) => {
-                console.log('hello');
                 dispatch(setAllPostReducer(result.listPost));
                 setTotalPage(result.totalPage);
                 setLoading(false);
