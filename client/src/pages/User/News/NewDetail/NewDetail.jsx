@@ -10,6 +10,8 @@ import Loading from '~/components/Loading';
 import Error from '~/pages/OtherPage/NotExist';
 import Image from '~/components/Image';
 import { getDetailNews } from '~/services/manageNewsServices';
+import { getAllNewsCategoryById } from '~/services/manageNewsCategoryServices';
+import ImgNew from '../img_news.png';
 import notify from '~/utils/notify';
 import config from '~/config';
 import NoimageAvatar from '~/assets/img/noImageAvatar.png';
@@ -19,6 +21,7 @@ const cx = classNames.bind(styles);
 function NewDetail() {
     const [loading, setLoading] = useState(false);
     const [inforNews, setInforNews] = useState({});
+    const [listNewsSuggesion, setListNewsSuggesion] = useState([]);
 
     const [cookies] = useCookies(['token']);
     const token = cookies.token;
@@ -30,7 +33,43 @@ function NewDetail() {
     const currentPath = location.pathname;
     const NewsId = String(currentPath.split('/')[3]);
 
-    const listNewsSuggesion = [1, 2, 3, 4, 5, 6];
+    const NewsDate = new Date(inforNews?.createdAt);
+
+    const formatTime = (date) => {
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0, nên phải cộng thêm 1
+        const year = date.getFullYear();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+
+        // Tạo chuỗi ngày tháng năm có định dạng mong muốn (vd: dd/mm/yyyy hh:mm:ss)
+        const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+        return formattedDate;
+    };
+
+    const getNewsOfCategory = async () => {
+        setLoading(true);
+        await getAllNewsCategoryById(token, inforNews.categoryId)
+            .then((result) => {
+                setLoading(false);
+                setListNewsSuggesion(result.newsList);
+                return;
+            })
+            .catch((error) => {
+                setLoading(false);
+                const messeageNotify = config.errorMesseage.getMesseageNotify();
+                if (!error.response) {
+                    notify.error(messeageNotify.ERROR_NETWORD);
+                    return;
+                }
+            });
+    };
+
+    useEffect(() => {
+        getNewsOfCategory();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [inforNews]);
 
     useEffect(() => {
         setLoading(true);
@@ -61,37 +100,11 @@ function NewDetail() {
                         <div className={cx('mt-4 flex flex-wrap items-center justify-start gap-2 text-sm')}>
                             <Image src="" fallback={NoimageAvatar} className={cx(' h-5 w-5 rounded-full')} />
                             <div className={cx('font-semibold')}>Minh Phương</div>
-                            <div className={cx('text-black/50')}>Wednesday, September 20, 2023 - 15:45</div>
+                            <div className={cx('text-black/50')}>{formatTime(NewsDate)}</div>
                         </div>
-                        <Image src="" className={cx('mt-12 w-full rounded-sm')} />
+                        <Image src={ImgNew} className={cx('mt-12 w-full rounded-sm')} />
 
-                        <p className={cx('mt-4 text-lg')}>
-                            Governor of Poltava province, Mr. Dmytro Lunin, said that on the night of September 19,
-                            Russia raided the Ukrainian oil refinery in the city of Kremenchuk, causing a fire. The
-                            attack caused the factory to temporarily suspend operations, but there are currently no
-                            reports of casualties.
-                            <br />
-                            <br />
-                            "Last night, Russia continuously attacked Poltava. Our air defense system effectively
-                            blocked enemy UAVs," Mr. Lunin said. According to the Ukrainian military, their air defense
-                            system shot down 17 out of 24 Russian UAVs in the raid. This is Ukraine's largest oil
-                            refinery. Since the conflict broke out more than a year ago, Russia has continuously
-                            targeted this oil refinery facility.
-                            <br />
-                            <br />
-                            On the same day, the Russian Ministry of Defense said Ukraine had attacked with UAVs in
-                            Russia's Belgorod and Oryol border areas late on September 19. This morning, September 20, a
-                            UAV believed to be from Ukraine also attacked a large oil tank near the airport in Sochi,
-                            Russia on the Black Sea coast.
-                            <br />
-                            <br />
-                            According to local media, the raided oil tank contained about 1,200 tons of oil.
-                            "Authorities are continuing to investigate the cause of the fire," Krasnodar Region Governor
-                            Veniamin Kondratyev said, adding that there were no casualties in the incident. In recent
-                            months, Ukraine has been accused of increasing UAV and missile raids deep into Russian
-                            territory and Russian-controlled areas. Ukrainian President Volodymyr Zelensky announced in
-                            July that war was gradually returning to Russian territory and that this was "inevitable".
-                        </p>
+                        {inforNews.content}
                         <div className={cx('mt-4 h-[2px] w-full bg-primary-color')}></div>
                         <div className={cx('mt-6 text-xl font-semibold')}>{t('of_interesting')}</div>
                         <div
@@ -103,7 +116,7 @@ function NewDetail() {
                             )}
                         >
                             {listNewsSuggesion.map((news, index) => (
-                                <ItemNews key={index} inforNew={{}} />
+                                <ItemNews key={index} inforNew={news} />
                             ))}
                         </div>
                     </div>

@@ -4,7 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import styles from './ItemNews.module.scss';
 import Image from '~/components/Image';
-import ImgNew from './imgVideo.jpg';
+import ImgNew from '../img_news.png';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,8 @@ function ItemNews({ inforNew }) {
 
     const openNewDetail = () => {
         const lastIndex = currentPath.lastIndexOf('/');
-        const pathToOpenFolder = currentPath.slice(0, lastIndex + 1) + String(inforNew?.id) + '/0';
+        const idCategory = inforNew?.categpryId ? inforNew?.categpryId : 'all';
+        const pathToOpenFolder = config.routes.news.NEW + '/' + String(idCategory) + '/' + String(inforNew?.id) + '/0';
         navigate(pathToOpenFolder);
     };
 
