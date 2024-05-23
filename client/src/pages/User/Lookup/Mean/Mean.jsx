@@ -43,7 +43,7 @@ function Mean({ isOpenAllMean, mean, index }) {
 
     return (
         <div className={cx('m-3 my-6 justify-center')} key={index}>
-            <span className={cx('rounded-full bg-blue-100 p-5')}>{mean.level !== '' ? mean.level : '  '}</span>
+            {mean.level !== '' && <span className={cx('rounded-full bg-blue-100 p-3')}>{mean.level}</span>}
             <span className={cx(' font-bold')}> {mean.conceptEnglish} </span>
             <button onClick={() => toggle()} className=" hover:rounded-lg hover:bg-blue-100">
                 <FontAwesomeIcon icon={faCaretUp} className={`mx-3 text-lg ${isOpenVietnamese ? 'hidden' : ''}`} />
@@ -59,7 +59,7 @@ function Mean({ isOpenAllMean, mean, index }) {
             </span>
             <div className={cx('flex flex-col gap-5 p-6')}>
                 {mean.examples.map((example, index) => {
-                    return <Example isOpenAllMean={isOpenAllMean} example={example}></Example>;
+                    return <Example key={index} isOpenAllMean={isOpenAllMean} example={example}></Example>;
                 })}
             </div>
         </div>
