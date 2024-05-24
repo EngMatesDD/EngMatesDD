@@ -12,7 +12,7 @@ function TypeWord({ isOpenAllMean, typeWord, index }) {
             </span>
             <div>
                 {typeWord.means.map((mean, index) => {
-                    return <Mean mean={mean} index={index} isOpenAllMean={isOpenAllMean}></Mean>;
+                    return <Mean key={index} mean={mean} index={index} isOpenAllMean={isOpenAllMean}></Mean>;
                 })}
             </div>
         </div>
