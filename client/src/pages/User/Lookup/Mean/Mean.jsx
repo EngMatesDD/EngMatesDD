@@ -1,38 +1,15 @@
 import classNames from 'classnames/bind';
-import { useCookies } from 'react-cookie';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Mean.module.scss';
 import Example from '../Example';
-import { setTranslate, translate } from '~/services/translationSevice';
 
 const cx = classNames.bind(styles);
 
 function Mean({ isOpenAllMean, mean, index }) {
     const [isOpenVietnamese, setIsOpenVietnamese] = useState(isOpenAllMean);
-    const [meanVietNamese, setMeanVietNamese] = useState('Không dịch được');
-
-    const [cookies] = useCookies(['token']);
-    const token = cookies.token;
-
-    const handleTranslate = async () => {
-        await setTranslate({ isRelease: true }, token);
-        const data = {
-            text: mean.conceptEnglish,
-            to: 'vi',
-        };
-        const resultTranslate = await translate(data, token);
-        setMeanVietNamese(resultTranslate);
-        await setTranslate({ isRelease: false }, token);
-    };
-
-    useEffect(() => {
-        handleTranslate();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     useEffect(() => {
         setIsOpenVietnamese(isOpenAllMean);
     }, [isOpenAllMean]);
@@ -55,7 +32,7 @@ function Mean({ isOpenAllMean, mean, index }) {
                     `bg-yellow-100 p-1  italic ${isOpenVietnamese ? '' : 'hidden'} ${mean.level !== '' ? 'mx-20' : ''}`,
                 )}
             >
-                {meanVietNamese}
+                {mean.conceptVietnamese}
             </span>
             <div className={cx('flex flex-col gap-5 p-6')}>
                 {mean.examples.map((example, index) => {
