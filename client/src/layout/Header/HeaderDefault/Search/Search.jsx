@@ -67,6 +67,7 @@ function Search({ showBoxSearch }) {
     const handleKeyDown = (event) => {
         // Check if the keycode is 13 (Enter)
         if (event.keyCode === 13) {
+            setShowResult(false);
             search(searchValue);
         }
     };

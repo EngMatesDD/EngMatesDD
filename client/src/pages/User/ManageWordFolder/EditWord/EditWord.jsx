@@ -128,7 +128,7 @@ function EditWord({ setIsPoperEditWord, inforWord, onPageChange }) {
                 onClose={closePoper}
                 onSave={handleEditWord}
                 handleSubmitForm={handleSubmit}
-                title={t('add_new_word')}
+                title={t('edit_word')}
             >
                 <Input
                     name={'title'}

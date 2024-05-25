@@ -58,7 +58,7 @@ function HeaderTranslation({ inputTranslation, setInputTranslation, outputTransl
     );
 }
 
-SearchLanguage.propTypes = {
+HeaderTranslation.propTypes = {
     inputTranslation: PropTypes.string.isRequired,
     setInputTranslation: PropTypes.func.isRequired,
     outputTranslation: PropTypes.string.isRequired,
