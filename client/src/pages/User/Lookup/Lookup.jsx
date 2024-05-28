@@ -3,6 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeLow } from '@fortawesome/free-solid-svg-icons';
+import { Howl } from 'howler';
 
 import styles from './Lookup.module.scss';
 import Loading from '~/components/Loading';
@@ -30,6 +33,19 @@ function Lookup() {
     const [wordId, setWordId] = useState();
 
     const { t } = useTranslation('translation', { keyPrefix: 'Lookup' });
+
+    const soundPlay = (src) => {
+        const sound = new Howl({ src, html5: true });
+        sound.play();
+    };
+
+    const playSoundUK = () => {
+        soundPlay(data.pronunciationUKAudio);
+    };
+
+    const playSoundUS = () => {
+        soundPlay(data.pronunciationUSAudio);
+    };
 
     useEffect(() => {
         setLoading(true);
@@ -101,12 +117,14 @@ function Lookup() {
                                 <h1 className={cx('pt-5 text-3xl')}>{data.name}</h1>
                                 <h2 className={cx('font-bold')}>{data.types[0]?.type}</h2>
                                 <div className={cx('flex gap-5')}>
-                                    <div className={cx('pronunciationUS flex gap-2')}>
+                                    <div className={cx('pronunciationUS flex items-center gap-2')}>
                                         <span className={cx('font-bold')}>US</span>
+                                        <FontAwesomeIcon icon={faVolumeLow} onClick={playSoundUS} />
                                         <span>{data.pronunciationUS}</span>
                                     </div>
-                                    <div className={cx('pronunciationUK flex gap-2')}>
+                                    <div className={cx('pronunciationUK flex items-center gap-2')}>
                                         <span className={cx('font-bold')}>UK</span>
+                                        <FontAwesomeIcon icon={faVolumeLow} onClick={playSoundUK} />
                                         <span>{data.pronunciationUK}</span>
                                     </div>
                                 </div>

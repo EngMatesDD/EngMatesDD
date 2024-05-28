@@ -73,10 +73,10 @@ function ItemVideo({ inforVideo, pageDetail }) {
                 )}
             >
                 {inforVideo ? (
-                    <video
+                    <Image
                         className={cx('h-[150px] w-full', { 'h-[92px] !w-[170px]': pageDetail })}
-                        src={inforVideo.url}
-                    ></video>
+                        src={inforVideo.image}
+                    ></Image>
                 ) : (
                     <Image className={cx('h-[150px] w-full', { 'h-[92px] !w-[170px]': pageDetail })} src={ImgVideo} />
                 )}
