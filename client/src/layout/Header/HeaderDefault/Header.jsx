@@ -29,9 +29,7 @@ function Header() {
     const navigation = getNavigation();
     const currentLanguage = localStorage.getItem('language');
     const isAdmin = localStorage.getItem('role') === 'ADMIN';
-    let userMenu = isAdmin
-        ? getUserMenu()
-        : getUserMenu().filter((value) => value.to !== config.routes.admin.MANAGEUSER);
+    let userMenu = isAdmin ? getUserMenu() : getUserMenu().filter((value) => value.to !== '/manage_user/1');
 
     const handleClickBtnMenu = () => {
         if (showMenu === false) {
