@@ -90,7 +90,11 @@ function Search({ showBoxSearch }) {
                                 <div
                                     key={index}
                                     className={cx('cursor-pointer px-4 py-[6px] hover:underline', 'result-item')}
-                                    onClick={() => search(word.name)}
+                                    onClick={() => {
+                                        setShowResult(false);
+                                        search(word.name);
+                                        setSearchValue(word.name);
+                                    }}
                                 >
                                     {word.name}
                                 </div>
