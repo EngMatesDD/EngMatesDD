@@ -17,9 +17,9 @@ function HeaderSecondnary({ iconTitle, title, backgroundColor, menuFilter, onCha
         background: 'linear-gradient(' + backgroundColor[0] + ',' + backgroundColor[1] + ')',
     };
 
-    const handleFilter = (item, index) => {
+    const handleFilter = (index) => {
         setIndexFilder(index);
-        onChange(item);
+        onChange(index);
     };
 
     return (
@@ -32,9 +32,11 @@ function HeaderSecondnary({ iconTitle, title, backgroundColor, menuFilter, onCha
                 {menuFilter.map((item, index) => (
                     <Button
                         key={index}
-                        className={cx('mr-5 px-4 py-1', 'btn-filter', { 'btn-active': indexFilter === index })}
+                        className={cx('mr-5 px-4 py-1', 'btn-filter', {
+                            'btn-active': indexFilter === index,
+                        })}
                         rounded
-                        onClick={() => handleFilter(item, index)}
+                        onClick={() => handleFilter(index)}
                     >
                         {item.title}
                     </Button>

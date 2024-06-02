@@ -35,6 +35,7 @@ const api = {
     },
     video: {
         GETALL: '/videos/all',
+        GET: '/videos',
         CREATE: '/videos',
         EDIT: '/videos',
         DELETE: '/videos',
@@ -44,6 +45,26 @@ const api = {
         CREATE: '/wordCategory',
         EDIT: '/wordCategory',
         DELETE: '/wordCategory',
+        ALLWORD: '/wordCategory',
+        DELETEWORD: '/words/category',
+        ADDWORD: '/words/category',
+    },
+    translation: {
+        GETTRANSLATE: '/translate/isRelease',
+        SETTRANSLATE: '/translate/isRelease',
+        TRANSLATE: '/translate',
+    },
+    forum: {
+        GETALLMYPOST: '/posts/all/myPost',
+        CREATEPOST: '/posts',
+        EDITPOST: '/posts',
+        DELETEPOST: '/posts',
+        GETALL: '/posts/all',
+        GETALLCMT: '/posts/comments',
+        GETCMTBYCMT: '/comments/ofComment',
+        DELETECMTOFPOST: '/comments/ofPost',
+        DELETECMTOFCMT: '/comments/ofComment',
+        CREATECMT: '/comments',
     },
 };
 

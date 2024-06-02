@@ -21,6 +21,8 @@ const routes = {
     },
     video: {
         VIDEO: '/video',
+        VIDEOS: '/video/:page',
+        VIDEODEDAIL: '/video/:page/:idVideo',
     },
     news: {
         NEW: '/news',
@@ -32,6 +34,8 @@ const routes = {
     },
     forum: {
         FORUM: '/forum',
+        MYPOST: '/forum/my_post',
+        COMUNITY: '/forum/comunity',
     },
     chat_ai: {
         CHAT_AI: '/chat_ai',
@@ -47,6 +51,7 @@ const routes = {
         MANAGEFORUM: '/manage_forum',
         MANAGEQUIZZES: '/manage_quizzes',
         MANAGEWORDCATEGORIES: '/manage_wcategories/:page',
+        MANAGEWORDINCATEGORY: '/manage_wcategories/:cagtegoryId/:page',
         MANAGENEWS: '/manage_news/:page',
         MANAGEVIDEOS: '/manage_videos/:page',
     },

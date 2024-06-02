@@ -83,9 +83,9 @@
         "manage_forum": "Quản lý Forum",
         "manage_user": "Quản lý người dùng",
         "manage_quizzes": "Quản lý Quizzes",
-        "manage_categories": "Quản lý từ vựng",
-        "manage_news": "Quản lý Manage news",
-        "manage_videos": "Quản lý videos",
+        "manage_categories": "Quản lý phân loại từ vựng",
+        "manage_news": "Quản lý tin tức",
+        "manage_videos": "Quản lý video",
         "user": "User"
     },
     "Footer": {
@@ -174,9 +174,23 @@
         "Law": "Pháp luật",
         "of_interesting": "Những bài báo liên quan"
     },
+    "Video": {
+        "Video": "Video",
+        "All": "Tất cả",
+        "Music": "Âm nhạc",
+        "Audiobook": "Sách ",
+        "Cartoon": "Hoạt hình",
+        "Football": "Bóng đá",
+        "Entertainment": "Giải trí",
+        "Digital": "Công nghệ số",
+        "Law": "Pháp luật"
+    },
     "Home": {
         "title": "Học tiếng anh cùng với ENGMATESDD",
         "content": "Chào mừng bạn đến với nền tảng nâng cao tiếng Anh của chúng tôi, nơi chúng tôi mang đến cho bạn một trải nghiệm học tập toàn diện. Trang web của chúng tôi cung cấp một loạt các tài nguyên được thiết kế để nâng cao khả năng sử dụng tiếng Anh của bạn. Những tài nguyên này bao gồm các bài tập về ngữ pháp và từ vựng, cũng như các hoạt động đọc và lắng nghe. Những lợi ích của việc sử dụng nền tảng học tiếng Anh của chúng tôi là đa chiều, từ khả năng linh hoạt điều chỉnh tốc độ học tập của bạn đến việc truy cập một kho tàng lớn các tư liệu giáo dục. Hơn nữa, nền tảng của chúng tôi cho phép bạn theo dõi tiến trình của mình và nhận phản hồi ngay lập tức về hiệu suất của bạn. Để làm hành trình học tập trở nên thú vị hơn, chúng tôi cung cấp một loạt trò chơi tương tác và bài kiểm tra, tạo thêm phần hứng thú cho những nỗ lực học ngôn ngữ của bạn."
+    },
+    "Translation": {
+        "translating": "Đang dịch..."
     },
     "ManageUser": {
         "name": "Tên",
@@ -233,6 +247,58 @@
         "category_already_exist": "Phân loại từ này đã tồn tại",
         "create_at": "Ngày tạo",
         "update_at": "Ngày cập nhật",
-        "manage_word_lists": "Quản lý danh sách từ"
+        "manage_word_lists": "Quản lý danh sách từ",
+        "word_count": "Số lượng từ",
+        "word": "Từ vựng",
+        "are_you_sure_to_delete_word": "Bạn có chắc chắn muốn xóa từ này không ?",
+        "click_to_add": "Click để thêm từ",
+        "add_word_success": "Thêm từ thành công",
+        "delete_word_success": "Xóa từ thành công",
+        "category_of_word_not_found": "Không tìm thấy phân loại từ của từ này",
+        "word_not_exist": "Từ này không tồn tại",
+        "word_already_exist": "Từ này đã tồn tại"
+    },
+    "Forum": {
+        "title": "Tiêu đề",
+        "content": "Nội dung",
+        "author": "Tác giả",
+        "action": "Hành động",
+        "are_you_sure_to_delete_post": "Bạn có chắc chắn muốn xóa bài viết này không",
+        "delete_post_success": "Xóa bài viết thành công",
+        "add_post": "Thêm bài viết",
+        "edit_post": "Chỉnh sửa bài viết",
+        "add_post_success": "Thêm bài viết thành công",
+        "edit_post_success": "Chỉnh sửa bài viết thành công",
+        "create_at": "Create at",
+        "update_at": "Update at",
+        "post_not_found": "Không tìm thấy bài viết hiện tại",
+        "comment": "Bình luận",
+        "are_you_sure_to_delete_comment": "Bạn có chắc chắn muốn xóa bình luận này không",
+        "delete_comment_success": "Xóa bình luận thành công",
+        "add_comment": "Thêm bình luận",
+        "forum": "Forum",
+        "comment_not_found": "Không tìm thấy bình luận hiện tại",
+        "my_post": "Bài viết của tôi",
+        "comunity": "Cộng đồng",
+        "what_is_on_your_mind": "Bạn đang nghĩ gì?",
+        "image": "Ảnh",
+        "delete_post": "Xóa bài viết",
+        "like": "Thích",
+        "share": "Chia sẻ",
+        "file_cannot_exceed_1mb": "File không thể vượt quá 1mb",
+        "file_not_image": "File không phải là ảnh",
+        "write_cmt": "Viết bình luận",
+        "feedback": "Phản hồi",
+        "write_feedback": "Viết phản hồi",
+        "see_more": "Xem thêm bình luận...",
+        "year": "năm",
+        "month": "tháng",
+        "week": "tuần",
+        "day": "ngày",
+        "hour": "giờ",
+        "minute": "phút",
+        "just_finished": "vừa xong",
+        "see_more_feedback": "Xem thêm phản hồi",
+        "delete": "Xóa"
     }
 }

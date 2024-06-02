@@ -1,18 +1,16 @@
-// import classNames from 'classnames/bind';
 import { useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCookies } from 'react-cookie';
 
-// import styles from './Delete.module.scss';
 import Loading from '~/components/Loading';
 import PopperConfirm from '~/components/PopperConfirm';
 import { deleteCategory } from '~/services/manageWordCategoryServices';
 import notify from '~/utils/notify';
 import config from '~/config';
+import handleError from '~/config/handleError';
 
-// const cx = classNames.bind(styles);
 
-function DeleteWordCategory({ setIsPoperDeleteWordCategory, categoryId }) {
+function DeleteWordCategory({ setIsPoperDeleteWordCategory, categoryId, forceUpdate }) {
     const [loading, setLoading] = useState(false);
 
     const { t } = useTranslation('translation', { keyPrefix: 'ManageWordCategory' });
@@ -30,15 +28,12 @@ function DeleteWordCategory({ setIsPoperDeleteWordCategory, categoryId }) {
             document.body.style.overflow = 'visible';
             setLoading(false);
             notify.success(config.ManageWordCategory.notification().DELETE_CATEGORY_SUCCESS);
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000);
+            forceUpdate();
         });
     };
 
     const handleDeleteCategory = async () => {
         setLoading(true);
-        const messeageNotifyCategory = config.ManageWordCategory.errorMesseage.getMesseageNotify();
         handleMiddleDeletetCategory().catch((error) => {
             setLoading(false);
             const messeageNotify = config.errorMesseage.getMesseageNotify();
@@ -48,13 +43,8 @@ function DeleteWordCategory({ setIsPoperDeleteWordCategory, categoryId }) {
             }
 
             const { message } = error.response.data;
-            const { messeageLogic } = config.ManageWordCategory.errorMesseage;
-            if (error.response.status === 404 && message.includes(messeageLogic.CATEGORY_NOT_FOUND)) {
-                notify.error(messeageNotifyCategory.CATEGORY_NOT_FOUND);
-                return;
-            }
-            notify.error(error.response.data.message);
-            return;
+            const configLogic = config.ManageWordCategory;
+            handleError(configLogic, message);
         });
     };
 
