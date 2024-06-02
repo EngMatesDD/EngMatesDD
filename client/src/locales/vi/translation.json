@@ -122,7 +122,7 @@
 
     "Lookup": {
         "Definition": "Định nghĩa",
-        "Synonyms": "Từ đồng nghĩa",
+        "Synonyms": "Từ liên quan",
         "Antonyms": "Từ trái nghĩa",
         "ClickToShow": "Click để hiện tất cả nghĩa",
         "word_aldready_exist_in_folder": "Từ đã tồn tại trong folder",
@@ -187,7 +187,7 @@
         "Sport": "Thể thao",
         "Digital": "Kĩ thuật số",
         "Law": "Pháp luật",
-        "of_interesting": "Những bài báo liên quan"
+        "related_news": "Những bài báo liên quan"
     },
     "Video": {
         "Video": "Video",

@@ -84,7 +84,7 @@ function ItemWord({ inforWord, onPageChange }) {
                             <div>
                                 <div>{inforWord?.types[0]?.means[0]?.conceptEnglish.slice(0, -1)}</div>
                                 <div className={cx('bg-blue-200')}>
-                                    {inforWord?.types[0]?.means[0]?.conceptVietnamese || 'Sẽ có khi có API'}
+                                    {inforWord?.types[0]?.means[0]?.conceptVietnamese}
                                 </div>
                             </div>
                         </div>

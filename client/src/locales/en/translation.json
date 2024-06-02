@@ -122,7 +122,7 @@
 
     "Lookup": {
         "Definition": "Definition",
-        "Synonyms": "Synonyms",
+        "Synonyms": "Related words",
         "Antonyms": "Antonyms",
         "ClickToShow": "Click to show all meaning",
         "word_aldready_exist_in_folder": "Word aldready exist in folder",
@@ -187,7 +187,7 @@
         "Sport": "Sport",
         "Digital": "Digital",
         "Law": "Law",
-        "of_interesting": "OF INTERESTING"
+        "related_news": "RELATED NEWS"
     },
     "Video": {
         "Video": "Video",
