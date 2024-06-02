@@ -11,7 +11,7 @@ import Error from '~/pages/OtherPage/NotExist';
 import Image from '~/components/Image';
 import { getDetailNews } from '~/services/manageNewsServices';
 import { getAllNewsCategoryById } from '~/services/manageNewsCategoryServices';
-import ImgNew from '../img_news.png';
+// import ImgNew from '../img_news.png';
 import notify from '~/utils/notify';
 import config from '~/config';
 import NoimageAvatar from '~/assets/img/noImageAvatar.png';
@@ -97,16 +97,16 @@ function NewDetail() {
                 <div className={cx('mb-[80px] w-full')}>
                     <div className={cx('new-container mt-20  px-[18%]', 'max-sm:px-[5%]')}>
                         <div className={cx('text-3xl font-medium')}>{inforNews.title}</div>
-                        <div className={cx('mt-4 flex flex-wrap items-center justify-start gap-2 text-sm')}>
+                        <div className={cx('mb-3 mt-4 flex flex-wrap items-center justify-start gap-2 text-sm')}>
                             <Image src="" fallback={NoimageAvatar} className={cx(' h-5 w-5 rounded-full')} />
                             <div className={cx('font-semibold')}>Minh Phương</div>
                             <div className={cx('text-black/50')}>{formatTime(NewsDate)}</div>
                         </div>
-                        <Image src={ImgNew} className={cx('mt-12 w-full rounded-sm')} />
+                        {/* <Image src={ImgNew} className={cx('mt-12 w-full rounded-sm')} /> */}
 
                         {inforNews.content}
                         <div className={cx('mt-4 h-[2px] w-full bg-primary-color')}></div>
-                        <div className={cx('mt-6 text-xl font-semibold')}>{t('of_interesting')}</div>
+                        <div className={cx('mt-6 text-xl font-semibold')}>{t('related_news')}</div>
                         <div
                             className={cx(
                                 'mt-[50px] grid w-full grid-cols-3 gap-y-6',

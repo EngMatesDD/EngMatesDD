@@ -45,6 +45,7 @@ function AddWord({ setIsPoperAddWord, onPageChange }) {
 
     const handleMiddleCreateWord = async (formData) => {
         const result = await search(formData.title);
+        console.log(result);
 
         const data = {
             name: formData.title,
@@ -58,12 +59,16 @@ function AddWord({ setIsPoperAddWord, onPageChange }) {
                     means: [
                         {
                             level: '',
-                            conceptEnglish: formData.definition + ':',
-                            conceptVietnamese: '',
-                            examples: formData.example.split('\n').map((value) => ({
-                                example: value,
-                                meanOfExample: '',
-                            })),
+                            conceptEnglish: formData.definition
+                                ? formData.definition + ':'
+                                : result.types[0].means[0].conceptEnglish,
+                            conceptVietnamese: result.types[0].means[0].conceptVietnamese,
+                            examples: formData.example
+                                ? formData.example.split('\n').map((value) => ({
+                                      example: value,
+                                      meanOfExample: '',
+                                  }))
+                                : result.types[0].means[0].examples,
                         },
                     ],
                 },
@@ -72,6 +77,7 @@ function AddWord({ setIsPoperAddWord, onPageChange }) {
             antonyms: [],
             folderId: folderId,
         };
+        //console.log(data);
         await addNewWord(data, cookies.token);
         await onPageChange(1, true);
 
